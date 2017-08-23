@@ -199,3 +199,41 @@ body {
   padding-left: 300px;
   padding-right: 300px;
 }
+
+
+.division{
+  height:400px;
+  margin: 10px 400px 10px;
+  color:#fff;
+  padding-top: 50px;
+  border-style: solid;
+  border-color: #fff;
+  border-radius: 8px;
+}
+.seven-college{
+    width:50%;
+    padding-left: 190px;
+    float:left;
+}
+
+.six-college{
+  width:50%;
+  padding-left:75px;
+  float:left;
+}
+
+.one-college{
+  padding-bottom: 20px;
+    text-align: left;
+}
+
+
+button{
+  background-color: #fff;
+  color:#000;
+  border-width: thin;
+  border-color:#fff;
+  border-radius: 8px;
+  width: 275px;
+  text-align: left;
+}
