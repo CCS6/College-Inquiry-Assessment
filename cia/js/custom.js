@@ -76,7 +76,7 @@
 
     // Registration request.
 
-    $('form[name=registration-form]').submit(function(e){
+    /*$('form[name=registration-form]').submit(function(e){
         e.preventDefault();
         var firstName=$('input[name=form-firstname]').val();
         var lastName=$('input[name=form-lastname]').val();
@@ -84,8 +84,7 @@
         var passWord=$('input[name=form-password]').val();
         var confPass=$('input[name=form-confpass]').val();
 
-        /*alert("Test.");
-        return false;*/
+
         $.ajax({
             url: 'actions/login.php',
             type: 'POST',
@@ -93,7 +92,6 @@
             //dataType: json,
             data: {firstname: firstName, lastname: lastName, username: userName, password: passWord, confpass: confPass},
             //Submit data as an array.
-            //data: 'firstname='+firstName+'&lastname='+lastName+'&username='+username+'&password='+password+'&confpass='+confpass,
             success: function(data){
                 if(data == "Success!"){
                     confirmMessage('alert-success','Record successfully added.');
@@ -105,18 +103,39 @@
                 }
             }
         });
+    });*/
+    $('form[name=registration-form]').submit(function(e){
+        e.preventDefault();
+        var str = $('form[name=registration-form]').serializeArray();
+        $.ajax({
+            type: "POST",
+            url: 'actions/login.php',
+            data: str,
+            success: function(data){
+                if(data == "Success!"){
+                    confirmMessage('alert-success','Record successfully added.');
+                    clearRegistrationForm();
+                }
+                else{
+                    confirmMessage('alert-danger','Username already exists.');
+                    clearRegistrationForm();
+                }
+            }
+        });
     });
+
 
     function confirmMessage(className,message){
         var htmlText = '';
 
         if(className =='alert-success'){
             htmlText = '<strong>Well done!</strong> '+message;
-            if ($('.alert').hasClass('alert-warning')){
-                $('.alert').removeClass('alert-warning');
+            if ($('.alert').hasClass('alert-danger')){
+                $('.alert').removeClass('alert-danger');
             }
             $('.alert').addClass(className);
-            $('.alert').html(htmlText).fadeIn('slow');
+            $('.alert').html(htmlText).fadeIn(1000);
+            setTimeout(timeout('.alert', htmlText),3000);
         }
         else{
             htmlText = '<strong>Oops!</strong> '+message;
@@ -124,22 +143,22 @@
                 $('.alert').removeClass('alert-success');
             }
             $('.alert').addClass(className);
-            $('.alert').html(htmlText).fadeIn('slow');
+            $('.alert').html(htmlText).fadeIn(1000);
+            setTimeout(timeout('.alert', htmlText),3000);
         }
-        setTimeout(timeout('.alert', htmlText),2000);
+
+        //var delayMsg= setTimeout(timeout('.alert', htmlText),1000);
     }
 
     function timeout(obj,htmlText){
-        $(obj).html(htmlText).fadeOut('slow');
+        $(obj).html(htmlText).fadeOut(1000);
+        console.log("$("+obj+").html("+htmlText+").fadeOut("+1000+");");
     }
 
     function clearRegistrationForm(){
         $("form[name=registration-form] :input").each(function() {
             $(this).val('');
         });
-        /*$("form[name=registration-form] :input[type=password]").each(function() {
-            $(this).val('');
-        });*/
         $('input.form-firstname').focus();
     };
 
