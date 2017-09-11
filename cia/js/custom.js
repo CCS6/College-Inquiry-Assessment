@@ -104,12 +104,33 @@
             }
         });
     });*/
+
+    $('form[name=login-form]').submit(function(e){
+        e.preventDefault();
+        var str = $('form[name=login-form]').serializeArray();
+        $.ajax({
+            type: "POST",
+            url: 'actions/register.php',
+            data: str,
+            success: function(data){
+                if(data == "Success!"){
+                    confirmMessage('alert-success','Record successfully added.');
+                    clearRegistrationForm();
+                }
+                else{
+                    confirmMessage('alert-danger','Username already exists.');
+                    clearRegistrationForm();
+                }
+            }
+        });
+    });
+
     $('form[name=registration-form]').submit(function(e){
         e.preventDefault();
         var str = $('form[name=registration-form]').serializeArray();
         $.ajax({
             type: "POST",
-            url: 'actions/login.php',
+            url: 'actions/register.php',
             data: str,
             success: function(data){
                 if(data == "Success!"){

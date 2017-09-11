@@ -1,7 +1,5 @@
 <?php
-    class User{
-        static $userType = 'user';
-
+    class Question{
         public function __construct(){
 
         }
