@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="form-bottom">
-                        <form role="form" action="loginConfirm.php" method="post" class="login-form">
+                        <form role="form" name="login-form" action="loginConfirm.php" method="post" class="login-form">
                             <div class="form-group">
                                 <label class="sr-only" for="form-username">Username</label>
                                 <input type="text" name="login-username" placeholder="Username" class="form-username form-control" id="form-username">
@@ -33,6 +33,10 @@
                                 <input type="password" name="login-password" placeholder="Password" class="form-password form-control" id="form-password">
                             </div>
                             <button type="submit" name ="submit"class="btn">Sign in!</button>
+                            <!--alert-success-->
+                            <div class="alert" role="alert">
+
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -55,33 +59,33 @@
                         </div>
                     </div>
                     <div class="form-bottom">
-                        <!---->
-                        <form role="form" action="registerConfirm.php" name="registration-form" method="post" class="registration-form">
+                        <!-- action="registerConfirm.php" -->
+                        <form role="form" name="registration-form" method="post" class="registration-form">
                             <div class="form-group">
                                 <label class="sr-only" for="form-email">First Name</label>
-                                <input type="text" name="form-firstname" placeholder="First Name" class="form-firstname form-control">
+                                <input type="text" name="firstname" placeholder="First Name" class="form-firstname form-control">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="form-about-yourself">Last Name</label>
-                                <input type="text" name="form-lastname" placeholder="Last Name" class="form-lastname form-control">
+                                <input type="text" name="lastname" placeholder="Last Name" class="form-lastname form-control">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="form-first-name">Username</label>
-                                <input type="text" name="form-username" placeholder="Username" class="form-username form-control">
+                                <input type="text" name="username" placeholder="Username" class="form-username form-control">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="form-last-name">Password</label>
-                                <input type="password" name="form-password" placeholder="Password" class="form-password form-control">
+                                <input type="password" name="password" placeholder="Password" class="form-password form-control">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="form-last-name">Confirm Password</label>
-                                <input type="password" name="form-confpass" placeholder="Confirm Password" class="form-confpass form-control">
+                                <input type="password" name="confpass" placeholder="Confirm Password" class="form-confpass form-control">
                             </div>
                             <button type="submit" name="submit" class="btn">Sign me up!</button>
                             <br /><br />
                             <!--alert-success-->
                             <div class="alert" role="alert">
-                              
+
                             </div>
                         </form>
                     </div>
