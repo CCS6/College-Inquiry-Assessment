@@ -23,18 +23,20 @@
                         </div>
                     </div>
                     <div class="form-bottom">
-                        <form role="form" name="login-form" action="loginConfirm.php" method="post" class="login-form">
+                        <!-- action="loginConfirm.php" -->
+                        <form role="form" name="login-form" method="post" class="login-form">
                             <div class="form-group">
                                 <label class="sr-only" for="form-username">Username</label>
-                                <input type="text" name="login-username" placeholder="Username" class="form-username form-control" id="form-username">
+                                <input type="text" name="username" placeholder="Username" class="login-username form-control" id="form-username">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="form-password">Password</label>
-                                <input type="password" name="login-password" placeholder="Password" class="form-password form-control" id="form-password">
+                                <input type="password" name="password" placeholder="Password" class="login-password form-control" id="form-password">
                             </div>
                             <button type="submit" name ="submit"class="btn">Sign in!</button>
                             <!--alert-success-->
-                            <div class="alert" role="alert">
+                            <br /><br />
+                            <div id="login-btn" class="alert" role="alert">
 
                             </div>
                         </form>
@@ -84,7 +86,7 @@
                             <button type="submit" name="submit" class="btn">Sign me up!</button>
                             <br /><br />
                             <!--alert-success-->
-                            <div class="alert" role="alert">
+                            <div id="register-btn" class="alert" role="alert">
 
                             </div>
                         </form>
