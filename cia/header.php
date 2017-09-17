@@ -1,3 +1,6 @@
+<?php session_start(); require 'classes/Session.php';
+  $s = new Session();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,7 +27,6 @@
     </script>
   </head>
   <body>
-
     <div class="loader"></div>
     <div id="myDiv">
     <!--HEADER-->
@@ -46,7 +48,15 @@
                 <li class=""><a href="assessment.php">Assessment</a></li>
                 <li class=""><a href="colleges.php">Colleges</a></li>
                 <li class=""><a href="about.php">About</a></li>
-                <li class=""><a href="login.php">Log-In</a></li>
+                <?php
+                  if($s->isLoggedIn() == 1 && $s->logOut() == 1){
+                    echo '<li class=""><a href="?page=logout" title="Log-Out">Logout</a></li>';
+                    echo '<li class=""><a href="userProfile.php" title="View Profile">['.$_SESSION['username'].']</a></li>';
+                  }
+                  else {
+                    echo '<li class=""><a href="login.php">Login</a></li>';
+                  }
+                 ?>
               </ul>
             </div>
           </div>
