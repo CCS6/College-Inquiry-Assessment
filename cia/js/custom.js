@@ -48,132 +48,121 @@
       mode: 'fade'
     });
 
-    // Sign-Up Validation
-    /*$('form[name=registration-form]').submit(function(e){
-        e.preventDefault();
-        alert("Test.");
-        return false;
-        var firstName=$('.form-firstname').val();
-        var lastName=$('.form-lastname').val();
-        var username=$('.form-username').val();
-        var password=$('.form-password').val();
-        var confpass=$('.form-confpass').val();
-
-        if(!firstName){
-            alert('First Name is required.');
-        }
-        return false;
-
-    });*/
-
-    /*$("form[name=registration-form]").submit(function() {
-        $(":input", this).each(function() {
-            if ($(this).val() == "")
-                alert("Empty Fields!!");
-                location.reload();
-        });
-    });*/
-
-    // Registration request.
-
-    /*$('form[name=registration-form]').submit(function(e){
-        e.preventDefault();
-        var firstName=$('input[name=form-firstname]').val();
-        var lastName=$('input[name=form-lastname]').val();
-        var userName=$('input[name=form-username]').val();
-        var passWord=$('input[name=form-password]').val();
-        var confPass=$('input[name=form-confpass]').val();
-
-
-        $.ajax({
-            url: 'actions/login.php',
-            type: 'POST',
-            //Use datatype option when either data pass is xml,json,etc.
-            //dataType: json,
-            data: {firstname: firstName, lastname: lastName, username: userName, password: passWord, confpass: confPass},
-            //Submit data as an array.
-            success: function(data){
-                if(data == "Success!"){
-                    confirmMessage('alert-success','Record successfully added.');
-                    clearRegistrationForm();
-                }
-                else{
-                    confirmMessage('alert-warning','Username already exists.');
-                    clearRegistrationForm();
-                }
-            }
-        });
-    });*/
-
     $('form[name=login-form]').submit(function(e){
         e.preventDefault();
-        var str = $('form[name=login-form]').serializeArray();
-        $.ajax({
-            type: "POST",
-            url: 'actions/register.php',
-            data: str,
-            success: function(data){
-                if(data == "Success!"){
-                    confirmMessage('alert-success','Record successfully added.');
-                    clearRegistrationForm();
+        var htmlText2 = '<strong>Oops!</strong>Please Fill All Required Fields!';
+        var a=$('input.login-firstname').val();
+        var b=$('input.login-lastname').val();
+        if (a==null || a=="",b==null || b=="")
+        {
+            $('#login-btn').addClass('alert-danger');
+            $('#login-btn').html(htmlText2).fadeIn(2000);
+            setTimeout(timeout('#login-btn', htmlText2),2000);
+        }
+        else{
+            var str1 = $('form[name=login-form]').serializeArray();
+            $.ajax({
+                type: "POST",
+                url: 'actions/login.php',
+                data: str1,
+                success: function(data){
+                    if(data == "Success!"){
+                        confirmMessageLogin('alert-success','Login success!');
+                        clearLoginForm();
+                    }
+                    else{
+                        confirmMessageLogin('alert-danger',"Username doesn't exist.");
+                        clearLoginForm();
+                    }
                 }
-                else{
-                    confirmMessage('alert-danger','Username already exists.');
-                    clearRegistrationForm();
-                }
-            }
-        });
+            });
+        }
     });
 
     $('form[name=registration-form]').submit(function(e){
         e.preventDefault();
-        var str = $('form[name=registration-form]').serializeArray();
-        $.ajax({
-            type: "POST",
-            url: 'actions/register.php',
-            data: str,
-            success: function(data){
-                if(data == "Success!"){
-                    confirmMessage('alert-success','Record successfully added.');
-                    clearRegistrationForm();
+        var htmlText1 = '<strong>Oops!</strong>Please Fill All Required Fields!';
+        var a=$('input.form-firstname').val();
+        var b=$('input.form-lastname').val();
+        var c=$('input.form-username').val();
+        var d=$('input.form-password').val();
+        var e=$('input.form-confpass').val();
+
+        if (a==null || a==""|| b==null || b==""|| c==null || c==""|| d==null || d==""|| e==null||e=="")
+        {
+            $('#register-btn').addClass('alert-danger');
+            $('#register-btn').html(htmlText1).fadeIn(2000);
+            setTimeout(timeout('#register-btn', htmlText1),2000);
+        }
+        else{
+            var str = $('form[name=registration-form]').serializeArray();
+            $.ajax({
+                type: "POST",
+                url: 'actions/register.php',
+                data: str,
+                success: function(data){
+                    if(data == "Success!"){
+                        confirmMessageRegister('alert-success','Record successfully added.');
+                        clearRegistrationForm();
+                    }
+                    else{
+                        confirmMessageRegister('alert-danger','Username already exists.');
+                        clearRegistrationForm();
+                    }
                 }
-                else{
-                    confirmMessage('alert-danger','Username already exists.');
-                    clearRegistrationForm();
-                }
-            }
-        });
+            });
+        }
     });
 
+    function confirmMessageRegister(className,message){
+        var htmlText = '';
 
-    function confirmMessage(className,message){
+
+        if(className =='alert-success'){
+            htmlText = '<strong>Well done!</strong> '+message;
+            if ($('#register-btn').hasClass('alert-danger')){
+                $('#register-btn').removeClass('alert-danger');
+            }
+            $('#register-btn').addClass(className);
+            $('#register-btn').html(htmlText).fadeIn(2000);
+            setTimeout(timeout('#register-btn', htmlText),2000);
+        }
+        else{
+            htmlText = '<strong>Oops!</strong> '+message;
+            if ($('#register-btn').hasClass('alert-success')){
+                $('#register-btn').removeClass('alert-success');
+            }
+            $('#register-btn').addClass(className);
+            $('#register-btn').html(htmlText).fadeIn(2000);
+            setTimeout(timeout('#register-btn', htmlText),2000);
+        }
+    }
+
+    function confirmMessageLogin(className,message){
         var htmlText = '';
 
         if(className =='alert-success'){
             htmlText = '<strong>Well done!</strong> '+message;
-            if ($('.alert').hasClass('alert-danger')){
-                $('.alert').removeClass('alert-danger');
+            if ($('#login-btn').hasClass('alert-danger')){
+                $('#login-btn').removeClass('alert-danger');
             }
-            $('.alert').addClass(className);
-            $('.alert').html(htmlText).fadeIn(1000);
-            setTimeout(timeout('.alert', htmlText),3000);
+            $('#login-btn').addClass(className);
+            $('#login-btn').html(htmlText).fadeIn(2000);
+            setTimeout(timeout('#login-btn', htmlText),2000);
         }
         else{
             htmlText = '<strong>Oops!</strong> '+message;
-            if ($('.alert').hasClass('alert-success')){
-                $('.alert').removeClass('alert-success');
+            if ($('#login-btn').hasClass('alert-success')){
+                $('#login-btn').removeClass('alert-success');
             }
-            $('.alert').addClass(className);
-            $('.alert').html(htmlText).fadeIn(1000);
-            setTimeout(timeout('.alert', htmlText),3000);
+            $('#login-btn').addClass(className);
+            $('#login-btn').html(htmlText).fadeIn(2000);
+            setTimeout(timeout('#login-btn', htmlText),2000);
         }
-
-        //var delayMsg= setTimeout(timeout('.alert', htmlText),1000);
     }
 
     function timeout(obj,htmlText){
-        $(obj).html(htmlText).fadeOut(1000);
-        console.log("$("+obj+").html("+htmlText+").fadeOut("+1000+");");
+        $(obj).html(htmlText).fadeOut(2000);
     }
 
     function clearRegistrationForm(){
@@ -181,6 +170,12 @@
             $(this).val('');
         });
         $('input.form-firstname').focus();
+    };
+    function clearLoginForm(){
+        $("form[name=login-form] :input").each(function() {
+            $(this).val('');
+        });
+        $('input.login-username').focus();
     };
 
 })(jQuery);

@@ -1,5 +1,5 @@
 <?php
-require_once 'Database.php';
+require_once 'actions/Database.php';
 $db = new Database();
 if (isset($_POST['submit'])) {
    $username = strip_tags(trim($_POST['login-username']));
