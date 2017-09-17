@@ -1,4 +1,4 @@
-<?php include "header.php"; include "Database.php"; $db= new Database()?>
+<?php include "header.php";?>
 <section id="feature" class="section-padding wow fadeInUp delay-05s">
     <div class="container-fluid cards-row">
         <div class="container">
@@ -62,7 +62,7 @@
                                                     <strong>Full Name</strong>
                                                     <br/>
                                                     <p class="text-muted">
-                                                        <?php $db->getRow("SELECT firstName FROM users WHERE username = ?",['loremipsum'])?>
+                                                        Johnathan Doe
                                                     </p>
                                                 </div>
                                                 <div class="about-info-p">

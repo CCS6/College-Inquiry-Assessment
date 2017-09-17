@@ -5,7 +5,7 @@
             <div class="banner-info text-center wow fadeIn delay-05s">
               <h1 class="bnr-title">CIA</h1>
               <h2 class="bnr-sub-title">College Inquiry Assessment</h2>
-              <p class="bnr-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip <br>ex ea commodo consequat.</p>
+              <p class="bnr-para">This project aims to allow the student to explore, through a given college, degrees which may be of interest to them <br />and also show the students the top five jobs related to the degree of their choice within the Philippines.</p>
               <div class="overlay-detail">
                 <a href="#service"><i class="fa fa-angle-down"></i></a>
               </div>

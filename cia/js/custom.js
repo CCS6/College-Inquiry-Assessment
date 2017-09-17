@@ -50,38 +50,42 @@
 
     $('form[name=login-form]').submit(function(e){
         e.preventDefault();
-        var htmlText2 = '<strong>Oops!</strong>Please Fill All Required Fields!';
-        var a=$('input.login-firstname').val();
-        var b=$('input.login-lastname').val();
+        var a=$('input.login-username').val();
+        var b=$('input.login-password').val();
         if (a==null || a=="",b==null || b=="")
         {
             $('#login-btn').addClass('alert-danger');
-            $('#login-btn').html(htmlText2).fadeIn(2000);
-            setTimeout(timeout('#login-btn', htmlText2),2000);
+            $('#login-btn').html('Tests').fadeIn(2000);
+            setTimeout(timeout('#login-btn', '<strong>Oops!</strong>Please Fill All Required Fields!'),2000);
         }
         else{
             var str1 = $('form[name=login-form]').serializeArray();
             $.ajax({
                 type: "POST",
                 url: 'actions/login.php',
+                dataType: 'json',
                 data: str1,
                 success: function(data){
-                    if(data == "Success!"){
-                        confirmMessageLogin('alert-success','Login success!');
-                        clearLoginForm();
-                    }
+                    console.log(data['type']);
+                    if(data['msg'] == "Error!"){
+                            clearLoginForm();
+                            confirmMessageLogin('alert-danger',"Username doesn't exist.");
+                        }
                     else{
-                        confirmMessageLogin('alert-danger',"Username doesn't exist.");
-                        clearLoginForm();
+                            clearLoginForm();
+                            confirmMessageLogin('alert-success','Login success!',data['type']);
+                            /*if(data['type'] == 'admin')
+                                window.location = '../admin/index.php';
+                            else
+                                window.location = 'index.php';*/
                     }
-                }
+                    }
             });
         }
     });
 
     $('form[name=registration-form]').submit(function(e){
         e.preventDefault();
-        var htmlText1 = '<strong>Oops!</strong>Please Fill All Required Fields!';
         var a=$('input.form-firstname').val();
         var b=$('input.form-lastname').val();
         var c=$('input.form-username').val();
@@ -92,7 +96,7 @@
         {
             $('#register-btn').addClass('alert-danger');
             $('#register-btn').html(htmlText1).fadeIn(2000);
-            setTimeout(timeout('#register-btn', htmlText1),2000);
+            setTimeout(timeout('#register-btn', '<strong>Oops!</strong>Please Fill All Required Fields!'),2000);
         }
         else{
             var str = $('form[name=registration-form]').serializeArray();
@@ -102,12 +106,12 @@
                 data: str,
                 success: function(data){
                     if(data == "Success!"){
-                        confirmMessageRegister('alert-success','Record successfully added.');
                         clearRegistrationForm();
+                        confirmMessageRegister('alert-success','Record successfully added.');
                     }
                     else{
-                        confirmMessageRegister('alert-danger','Username already exists.');
                         clearRegistrationForm();
+                        confirmMessageRegister('alert-danger','Username already exists.');
                     }
                 }
             });
@@ -138,7 +142,8 @@
         }
     }
 
-    function confirmMessageLogin(className,message){
+
+    function confirmMessageLogin(className,message,type){
         var htmlText = '';
 
         if(className =='alert-success'){
@@ -148,7 +153,10 @@
             }
             $('#login-btn').addClass(className);
             $('#login-btn').html(htmlText).fadeIn(2000);
-            setTimeout(timeout('#login-btn', htmlText),2000);
+            if(type == 'admin')
+                setTimeout(timeoutAdminLogin('#login-btn', htmlText),2000);
+            else
+                setTimeout(timeoutUserLogin('#login-btn', htmlText),2000);;
         }
         else{
             htmlText = '<strong>Oops!</strong> '+message;
@@ -159,6 +167,18 @@
             $('#login-btn').html(htmlText).fadeIn(2000);
             setTimeout(timeout('#login-btn', htmlText),2000);
         }
+    }
+
+    function timeoutAdminLogin(obj,htmlText){
+        $(obj).html(htmlText).fadeOut(2000,function(){
+            window.location = '../admin/index.php';
+        });
+    }
+
+    function timeoutUserLogin(obj,htmlText){
+        $(obj).html(htmlText).fadeOut(2000,function(){
+            window.location = '../index.php';
+        });
     }
 
     function timeout(obj,htmlText){
@@ -175,7 +195,6 @@
         $("form[name=login-form] :input").each(function() {
             $(this).val('');
         });
-        $('input.login-username').focus();
     };
 
 })(jQuery);
