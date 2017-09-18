@@ -10,14 +10,14 @@
           <div class="service-item">
             <h3><span>C</span>ollege of Agriculture</h3>
             <p>The College of Agriculture emphasizes academic preparation with extensive community practice for leadership in rural Philippines. Courses are geared to understanding our society and to developing skills needed for making agricultural communities productive and financially viable.</p>
-            <a href="agriculture.php">learn more...</a>
+            <a href="collegePages/agriculture.php">learn more...</a>
           </div>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="service-item">
             <h3><span>C</span>ollege of Arts and Sciences</h3>
             <p>Granted Level III accreditation status by recognized accrediting agencies in the Philippine educational system, the College provides undergraduate and graduate instruction in various areas of learning such as in the fields of Anthropology,Creative Writing, English Language, Filipino, History, Literature, Philosophy, Political Science, Sociology, Physics, Chemistry, Biology, Mathematics among others.</p>
-            <a href="artssciences.php">learn more...</a>
+            <a href="collegePages/artssciences.php">learn more...</a>
           </div>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">

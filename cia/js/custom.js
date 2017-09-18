@@ -66,7 +66,7 @@
                 dataType: 'json',
                 data: str1,
                 success: function(data){
-                    console.log(data['type']);
+                    alert(data);
                     if(data['msg'] == "Error!"){
                             clearLoginForm();
                             confirmMessageLogin('alert-danger',"Username doesn't exist.");
@@ -74,10 +74,6 @@
                     else{
                             clearLoginForm();
                             confirmMessageLogin('alert-success','Login success!',data['type']);
-                            /*if(data['type'] == 'admin')
-                                window.location = '../admin/index.php';
-                            else
-                                window.location = 'index.php';*/
                     }
                     }
             });
