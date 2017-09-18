@@ -91,7 +91,7 @@
         if (a==null || a==""|| b==null || b==""|| c==null || c==""|| d==null || d==""|| e==null||e=="")
         {
             $('#register-btn').addClass('alert-danger');
-            $('#register-btn').html(htmlText1).fadeIn(2000);
+            $('#register-btn').html('<strong>Oops!</strong>Please Fill All Required Fields!').fadeIn(2000);
             setTimeout(timeout('#register-btn', '<strong>Oops!</strong>Please Fill All Required Fields!'),2000);
         }
         else{
