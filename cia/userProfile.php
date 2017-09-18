@@ -1,4 +1,6 @@
-<?php include "header.php";?>
+<?php include "header.php"; /*require 'classes/Session.php';
+    $f = new Session();*/
+?>
 <section id="feature" class="section-padding wow fadeInUp delay-05s">
     <div class="container-fluid cards-row">
         <div class="container">
@@ -61,24 +63,23 @@
                                                 <div class="about-info-p">
                                                     <strong>Full Name</strong>
                                                     <br/>
-                                                    <p class="text-muted">
-                                                        Johnathan Doe
-                                                    </p>
+                                                    <?php
+                                                        echo '<p class="text-muted">'.$_SESSION['firstname'].' '.$_SESSION['lastname'].'</p>';
+                                                    ?>
                                                 </div>
                                                 <div class="about-info-p">
-                                                    <strong>Mobile</strong>
+                                                    <strong>Type</strong>
                                                     <br/>
-                                                    <p class="text-muted">(123) 123 1234</p>
+                                                    <?php
+                                                        echo '<p class="text-muted">'.$_SESSION['type'].'</p>';
+                                                    ?>
                                                 </div>
                                                 <div class="about-info-p">
-                                                    <strong>Email</strong>
+                                                    <strong>Username</strong>
                                                     <br/>
-                                                    <p class="text-muted">johnathandeon @moltran.com</p>
-                                                </div>
-                                                <div class="about-info-p m-b-0">
-                                                    <strong>Location</strong>
-                                                    <br/>
-                                                    <p class="text-muted">USA</p>
+                                                    <?php
+                                                        echo '<p class="text-muted">'.$_SESSION['username'].'</p>';
+                                                    ?>
                                                 </div>
                                             </div>
                                         </div>

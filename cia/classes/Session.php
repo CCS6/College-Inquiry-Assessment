@@ -5,14 +5,13 @@
 
         public function isLoggedIn(){
         $bool = 0;
-        // && $_SESSION['type'] == 'admin'
         if(isset($_SESSION['username'])){
             $bool = 1;
         }
           else {
             $bool = 0;
           }
-          return $bool;//json_encode(array('msg'=>$bool,'type'=>$_SESSION['type']));
+          return $bool;
         }
         public function logOut(){
             $bool = 1;
