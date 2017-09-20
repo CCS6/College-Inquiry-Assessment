@@ -16,7 +16,7 @@
         <div class="caption">
           <h3>Derick Ho</h3>
           <p class="card-description">A customized about us page design using bootstrap framework, HTML and CSS.</p>
-          <p class="social"><a href=""><i class="fa fa-facebook"></i></a> <a href=""><i class="fa fa-twitter"></i></a> <a href=""><i class="fa fa-linkedin"></i></a> <a href=""><i class="fa fa-google-plus"></i></a></p>
+          <p class="social"><a href=""><i class="fa fa-facebook"></i></a></p>
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
         <div class="caption">
           <h3>Seth Cornelio</h3>
           <p class="card-description">A customized about us page design using bootstrap framework, HTML and CSS.</p>
-          <p class="social"><a href=""><i class="fa fa-facebook"></i></a> <a href=""><i class="fa fa-twitter"></i></a> <a href=""><i class="fa fa-linkedin"></i></a> <a href=""><i class="fa fa-google-plus"></i></a></p>
+          <p class="social"><a href=""><i class="fa fa-facebook"></i></a> <a href=""><i class="fa fa-twitter"></i></a> <a href=""><i class="fa fa-google-plus"></i></a></p>
         </div>
       </div>
     </div>

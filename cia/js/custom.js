@@ -66,8 +66,7 @@
                 dataType: 'json',
                 data: str1,
                 success: function(data){
-                    alert(data);
-                    if(data['msg'] == "Error!"){
+                    if(data['notice'] == "Error!"){
                             clearLoginForm();
                             confirmMessageLogin('alert-danger',"Username doesn't exist.");
                         }
@@ -91,7 +90,7 @@
         if (a==null || a==""|| b==null || b==""|| c==null || c==""|| d==null || d==""|| e==null||e=="")
         {
             $('#register-btn').addClass('alert-danger');
-            ('#register-btn').html(htmlText1).fadeIn(2000);
+            $('#register-btn').html('<strong>Oops!</strong>Please Fill All Required Fields!').fadeIn(2000);
             setTimeout(timeout('#register-btn', '<strong>Oops!</strong>Please Fill All Required Fields!'),2000);
         }
         else{
@@ -99,9 +98,10 @@
             $.ajax({
                 type: "POST",
                 url: 'actions/register.php',
+                dataType: 'json',
                 data: str,
                 success: function(data){
-                    if(data == "Success!"){
+                    if(data['notice'] == "Success!"){
                         clearRegistrationForm();
                         confirmMessageRegister('alert-success','Record successfully added.');
                     }
