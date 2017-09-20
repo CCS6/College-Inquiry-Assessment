@@ -12,7 +12,7 @@ $db = new Database();
          if ($result > 0){
            session_start();
            $_SESSION['username'] = $username;
-           $_SESSION['acctType'] = $result['acctType'];
+           $_SESSION['type'] = $result['acctType'];
            $_SESSION['firstname'] = $result['firstName'];
            $_SESSION['lastname'] = $result['lastName'];
            $response = array('msg'=>'Success!','type'=>$_SESSION['type']);
