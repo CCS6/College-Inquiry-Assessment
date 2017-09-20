@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<?/*php
+<?php
   require '../config.php';
 
-  //$resultUser = $db->getRow("SELECT count(*) AS usersCount FROM user WHERE acctType = 'user'");
-  //$userCount = $resultUser['usersCount'];
-
-  $result = $db->select(count(*) AS usersCount)->from('user')->where('acctType', 'user')->fetch();
-  $userCount = $resultUser[0]['usersCount'];*/
+  $db->select()->from('user')->where('acctType',"user")->execute();
+  $userCount = $db->affected_rows;
 ?>
 <html>
     <head>
