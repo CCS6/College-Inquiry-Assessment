@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2017 at 12:14 AM
+-- Generation Time: Sep 18, 2017 at 06:29 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -71,9 +71,9 @@ INSERT INTO `answerkey` (`collegeID`, `collegeNo`, `collegeName`, `q1A1`, `q2A2`
 
 CREATE TABLE `colleges` (
   `collegeNo` int(11) NOT NULL,
-  `collegeID` int(11) NOT NULL,
+  `collegeCode` text NOT NULL,
   `collegeName` text NOT NULL,
-  `collegeAboutInfo` text NOT NULL,
+  `collegeDesc` text NOT NULL,
   `collegeDean` text NOT NULL,
   `collegeEmail` text NOT NULL,
   `collegePhoneNumber` text NOT NULL
@@ -83,8 +83,8 @@ CREATE TABLE `colleges` (
 -- Dumping data for table `colleges`
 --
 
-INSERT INTO `colleges` (`collegeNo`, `collegeID`, `collegeName`, `collegeAboutInfo`, `collegeDean`, `collegeEmail`, `collegePhoneNumber`) VALUES
-(1, 123, 'College of Agriculture', 'The College of Agriculture emphasizes academic preparation with extensive community practice for leadership in rural Philippines. Courses are geared to understanding our society and to developing skills needed for making agricultural communities productive and financially viable. Silliman University College of Agriculture is an ACAP (Association of Colleges of Agriculture in the Philippines) charter member.\r\nThe College offers degree programs in Bachelor of Science in Agriculture (majors in Animal Science and Agronomy), Bachelor of Science in Agricultural Business and Master in Applied Science (M.App.Sci.) in Systems Agriculture. The Bachelor of Science programs are PAASCU accredited (level II).\r\nThrough a 10-year development program under the sponsorship of the International Development Program that ended in June 1994, a new thrust in learning and teaching agriculture was developed. The initial step was sending all the members of the faculty for either Special Study Program, Masteral or Ph.D. studies in Australia. The Alternative Approach, a new curricular approach that emphasizes experiential learning and systems thinking and practice is now being implemented at Silliman University College of Agriculture.\r\nThe College of Agriculture utilizes an alternative approach to teaching and learning agriculture which emphasizes competency and issue-based learning.\r\nThe competencies expected of a problem solver, and systems manager. It is envisioned that graduates with such competencies can cope with real world prob Federal Republic of Germany with a grant of $90,000. The College has modern lecture rooms and indoor laboratories for animal and plant sciences built in 1977 Another building unit composed of lecture rooms, a laboratory, a library and offices was built in 1980 through the joint support of the Evangelical Central Agency and the Coconut Federation of the Philippines (COCOFED). In addition, it has eight cottages for seniors and juniors constructed at a cost of P1.2 million donated by the COCOFED.', 'Dean: Chona Fontelo Javier', 'Email: aggies@su.edu.ph', 'Phone: 035 4225654');
+INSERT INTO `colleges` (`collegeNo`, `collegeCode`, `collegeName`, `collegeDesc`, `collegeDean`, `collegeEmail`, `collegePhoneNumber`) VALUES
+(1, '123', 'College of Agriculture', 'The College of Agriculture emphasizes academic preparation with extensive community practice for leadership in rural Philippines. Courses are geared to understanding our society and to developing skills needed for making agricultural communities productive and financially viable. Silliman University College of Agriculture is an ACAP (Association of Colleges of Agriculture in the Philippines) charter member.\r\nThe College offers degree programs in Bachelor of Science in Agriculture (majors in Animal Science and Agronomy), Bachelor of Science in Agricultural Business and Master in Applied Science (M.App.Sci.) in Systems Agriculture. The Bachelor of Science programs are PAASCU accredited (level II).\r\nThrough a 10-year development program under the sponsorship of the International Development Program that ended in June 1994, a new thrust in learning and teaching agriculture was developed. The initial step was sending all the members of the faculty for either Special Study Program, Masteral or Ph.D. studies in Australia. The Alternative Approach, a new curricular approach that emphasizes experiential learning and systems thinking and practice is now being implemented at Silliman University College of Agriculture.\r\nThe College of Agriculture utilizes an alternative approach to teaching and learning agriculture which emphasizes competency and issue-based learning.\r\nThe competencies expected of a problem solver, and systems manager. It is envisioned that graduates with such competencies can cope with real world prob Federal Republic of Germany with a grant of $90,000. The College has modern lecture rooms and indoor laboratories for animal and plant sciences built in 1977 Another building unit composed of lecture rooms, a laboratory, a library and offices was built in 1980 through the joint support of the Evangelical Central Agency and the Coconut Federation of the Philippines (COCOFED). In addition, it has eight cottages for seniors and juniors constructed at a cost of P1.2 million donated by the COCOFED.', 'Dean: Chona Fontelo Javier', 'Email: aggies@su.edu.ph', 'Phone: 035 4225654');
 
 -- --------------------------------------------------------
 
@@ -114,8 +114,7 @@ CREATE TABLE `questions` (
   `q6` text NOT NULL,
   `q7` text NOT NULL,
   `q8` text NOT NULL,
-  `q9` text NOT NULL,
-  `q10` text NOT NULL
+  `q9` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -126,7 +125,7 @@ CREATE TABLE `questions` (
 
 CREATE TABLE `user` (
   `acctNo` int(11) NOT NULL,
-  `type` text NOT NULL,
+  `acctType` text NOT NULL,
   `firstName` varchar(255) NOT NULL,
   `lastName` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
@@ -137,9 +136,9 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`acctNo`, `type`, `firstName`, `lastName`, `username`, `password`) VALUES
+INSERT INTO `user` (`acctNo`, `acctType`, `firstName`, `lastName`, `username`, `password`) VALUES
 (1, 'admin', 'Charles', 'Carino', 'charlesvcarino', 'ee26bed8a2062297dbe8ee28f8644963'),
-(2, 'admin', 'Seth', 'Cornelio', 'test', '098f6bcd4621d373cade4e832627b4f6');
+(2, 'user', 'Charles Christian', 'Carino', 'loremipsum', '098f6bcd4621d373cade4e832627b4f6');
 
 -- --------------------------------------------------------
 
@@ -204,7 +203,7 @@ ALTER TABLE `degrees`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `acctNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `acctNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --

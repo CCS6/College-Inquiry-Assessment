@@ -1,25 +1,27 @@
 <?php
-require_once '../classes/Database.php';
+require '../config.php';
 
+$data = array(
+    'username'=>strip_tags(trim($_POST['username'])),
+    'password'=>md5(strip_tags(trim($_POST['password'])))
+);
 
-$db = new Database();
+$db->select()->from('user')->where('username',$data['username'])->execute();
 
-   $username = strip_tags(trim($_POST['username']));
-   $password = md5(strip_tags(trim($_POST['password'])));
+if (($db->affected_rows) > 0) {
+    session_start();
+    $result = $db->select()->from('user')->where('username', $data['username'])->fetch();
+    $_SESSION['username'] = $result[0]['username'];
+    $_SESSION['type'] = $result[0]['acctType'];
+    $_SESSION['firstname'] = $result[0]['firstName'];
+    $_SESSION['lastname'] = $result[0]['lastName'];
 
-   //Add user type=='admin' condition
-   $result = $db->getRow("SELECT * FROM user WHERE username = ?",[$username]);
-         if ($result > 0){
-           session_start();
-           $_SESSION['username'] = $username;
-           $_SESSION['type'] = $result['acctType'];
-           $_SESSION['firstname'] = $result['firstName'];
-           $_SESSION['lastname'] = $result['lastName'];
-           $response = array('msg'=>'Success!','type'=>$_SESSION['type']);
-      }
-      else {
-         $response = array('msg'=>'Error!');
-     }
-     echo json_encode($response);
+    $response = array('notice'=>'Success!','type'=>$_SESSION['type']);
+}
+else {
+    $response = array('notice'=>'Error!');
+}
+
+echo json_encode($response);
 
 ?>

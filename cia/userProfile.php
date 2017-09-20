@@ -32,18 +32,12 @@
                                     <span class="hidden-xs">About Me</span>
                                 </a>
                             </li>
-                            <li class="tab">
-                                <a href="#profile-2" data-toggle="tab" aria-expanded="false">
-                                    <span class="visible-xs"><i class="fa fa-user"></i></span>
-                                    <span class="hidden-xs">Activities</span>
-                                </a>
-                            </li>
-                            <!--<li class="tab" >
+                            <li class="tab" >
                                 <a href="#settings-2" data-toggle="tab" aria-expanded="false">
                                     <span class="visible-xs"><i class="fa fa-cog"></i></span>
                                     <span class="hidden-xs">Settings</span>
                                 </a>
-                            </li>-->
+                            </li>
                         <div class="indicator"></div></ul>
                         </div>
                     </div>
@@ -83,23 +77,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Personal-Information -->
-
-                                        <!-- Languages -->
-                                        <div class="panel panel-default panel-fill">
-                                            <div class="panel-heading">
-                                                <h3 class="panel-title">Languages</h3>
-                                            </div>
-                                            <div class="panel-body">
-                                                <ul>
-                                                    <li>English</li>
-                                                    <li>Franch</li>
-                                                    <li>Greek</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- Languages -->
-
                                     </div>
 
 
@@ -107,81 +84,18 @@
                                         <!-- Personal-Information -->
                                         <div class="panel panel-default panel-fill">
                                             <div class="panel-heading">
-                                                <h3 class="panel-title">Biography</h3>
+                                                <h3 class="panel-title">Assessment Results</h3>
                                             </div>
                                             <div class="panel-body">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-
-                                                <p><strong>But also the leap into electronic typesetting, remaining essentially unchanged.</strong></p>
-
-                                                <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                                <p>
+                                                    Answers from a user's most recent assesment shall be shown here.(CollegeName,Degree,Jobs).
+                                                </p>
                                             </div>
                                         </div>
                                         <!-- Personal-Information -->
                                     </div>
 
                                 </div>
-                            </div>
-
-
-
-
-                            <div class="tab-pane" id="profile-2">
-                                <!-- Personal-Information -->
-                                <div class="panel panel-default panel-fill">
-
-                                    <div class="panel-body">
-                                        <div class="timeline-2">
-                                        <div class="time-item">
-                                            <div class="item-info">
-                                                <div class="text-muted">5 minutes ago</div>
-                                                <p><strong><a href="#" class="text-info">John Doe</a></strong> Uploaded a photo <strong>"DSC000586.jpg"</strong></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="time-item">
-                                            <div class="item-info">
-                                                <div class="text-muted">30 minutes ago</div>
-                                                <p><a href="" class="text-info">Lorem</a> commented your post.</p>
-                                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod. "</em></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="time-item">
-                                            <div class="item-info">
-                                                <div class="text-muted">59 minutes ago</div>
-                                                <p><a href="" class="text-info">Jessi</a> attended a meeting with<a href="#" class="text-success">John Doe</a>.</p>
-                                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod. "</em></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="time-item">
-                                            <div class="item-info">
-                                                <div class="text-muted">5 minutes ago</div>
-                                                <p><strong><a href="#" class="text-info">John Doe</a></strong>Uploaded 2 new photos</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="time-item">
-                                            <div class="item-info">
-                                                <div class="text-muted">30 minutes ago</div>
-                                                <p><a href="" class="text-info">Lorem</a> commented your post.</p>
-                                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod. "</em></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="time-item">
-                                            <div class="item-info">
-                                                <div class="text-muted">59 minutes ago</div>
-                                                <p><a href="" class="text-info">Jessi</a> attended a meeting with<a href="#" class="text-success">John Doe</a>.</p>
-                                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod. "</em></p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    </div>
-                                </div>
-                                <!-- Personal-Information -->
                             </div>
                             <div class="tab-pane" id="settings-2">
                                 <!-- Personal-Information -->
@@ -191,34 +105,31 @@
                                         <h3 class="panel-title">Edit Profile</h3>
                                     </div>
                                     <div class="panel-body">
-                                        <form role="form">
-                                            <div class="form-group">
-                                                <label for="FullName">Full Name</label>
-                                                <input type="text" value="John Doe" id="FullName" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="Email">Email</label>
-                                                <input type="email" value="first.last@example.com" id="Email" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="Username">Username</label>
-                                                <input type="text" value="john" id="Username" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="Password">Password</label>
-                                                <input type="password" placeholder="6 - 15 Characters" id="Password" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="RePassword">Re-Password</label>
-                                                <input type="password" placeholder="6 - 15 Characters" id="RePassword" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="AboutMe">About Me</label>
-                                                <textarea style="height: 125px;" id="AboutMe" class="form-control">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</textarea>
-                                            </div>
-                                            <button class="btn btn-primary waves-effect waves-light w-md" type="submit">Save</button>
-                                        </form>
-
+                                        <div class="panel panel-default panel-fill" id='userSettings'>
+                                            <form role="form" class="user-settings">
+                                                <div class="form-group">
+                                                    <label for="FullName">First Name</label>
+                                                    <input type="text" placeholder="John" id="firstName" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Email">Last Name</label>
+                                                    <input type="email" placeholder="Doe" id="lastName" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Username">Username</label>
+                                                    <input type="text" placeholder="john" id="username" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Password">Password</label>
+                                                    <input type="password" placeholder="6 - 15 Characters" id="password" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="RePassword">Re-Password</label>
+                                                    <input type="password" placeholder="6 - 15 Characters" id="RePassword" class="form-control">
+                                                </div>
+                                                <button class="btn btn-primary waves-effect waves-light w-md" type="submit">Save</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- Personal-Information -->
