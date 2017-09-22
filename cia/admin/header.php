@@ -8,7 +8,7 @@
 
         <link rel="shortcut icon" href="images/favicon_1.ico">
 
-        <title>Moltran - Responsive Admin Dashboard Template</title>
+        <title>CIA Admin Page</title>
 
         <!-- Base Css Files -->
         <link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -51,7 +51,7 @@
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <div class="text-center">
-                        <a href="index.php" class="logo"><i class="md md-terrain"></i> <span>Moltran </span></a>
+                        <a href="index.php" class="logo"><i class="md md-terrain"></i> <span>CIA </span></a>
                     </div>
                 </div>
                 <!-- Button mobile view to collapse sidebar menu -->

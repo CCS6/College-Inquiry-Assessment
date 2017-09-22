@@ -7,16 +7,16 @@ class Users{
     }
 
     function setUsers($db){
-        $this->$result = $db->select()->from('user')->fetch();
+        $this->$result = $db->select()->from('account')->fetch();
     }
 
     function getUsers($db){
 
-        return $db->select()->from('user')->fetch();
+        return $db->select()->from('account')->fetch();
     }
 
     function getTotalUsers($db){
-        $db->select()->from('user')->execute();
+        $db->select()->from('account')->execute();
         return $db->affected_rows;
     }
 }
