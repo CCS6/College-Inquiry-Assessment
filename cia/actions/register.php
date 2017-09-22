@@ -21,7 +21,7 @@ require_once '../config.php';
     //$sql = "SELECT * FROM user WHERE username='$username'";
     //$db->query($sql)->execute() ;
 
-    $db->select()->from('user')->where('username',$data['username'])->execute();
+    $db->select()->from('account')->where('username',$data['username'])->execute();
     //echo $db->last_query();//prints last query string
 
     // Gets the total number of rows selected $db->affected_rows
@@ -36,7 +36,7 @@ require_once '../config.php';
         //* @param string name of the table
         //* @param array the data for inserting into the table
 
-        $id = $db->insert("user",$data);//returns the last id inserted
+        $id = $db->insert("account",$data);//returns the last id inserted
         $response = array('notice' => 'Success!','msg'=> "User[".$data['username']."] added.",'lastid'=>$id);
     } else {
         $response = array('notice'=>'Warning!','msg' => "The username[".$data['username']."] already exists.");

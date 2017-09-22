@@ -32,8 +32,8 @@
                     <a href="#" class="waves-effect"><i class="md md-view-list"></i><span> Content Tables </span><span class="pull-right"><i class="md md-add"></i></span></a>
                     <ul class="list-unstyled">
                         <li><a href="users.php">Users Table</a></li>
-                        <li><a href="usersTable.php">Questions Table</a></li>
-                        <li><a href="usersTable.php">Colleges Table</a></li>
+                        <li><a href="question.php">Questions Table</a></li>
+                        <li><a href="college.php">Colleges Table</a></li>
                     </ul>
                 </li>
             </ul>

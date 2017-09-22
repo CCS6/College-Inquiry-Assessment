@@ -36,31 +36,31 @@
 </div>
 <!-- END wrapper -->
 
-<script>
-var resizefunc = [];
-</script>
+    <script>
+        var resizefunc = [];
+    </script>
 
-<!-- jQuery  -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/waves.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-<script src="js/jquery.scrollTo.min.js"></script>
-<script src="assets/jquery-detectmobile/detect.js"></script>
-<script src="assets/fastclick/fastclick.js"></script>
-<script src="assets/jquery-slimscroll/jquery.slimscroll.js"></script>
-<script src="assets/jquery-blockui/jquery.blockUI.js"></script>
+    <!-- jQuery  -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/waves.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="assets/jquery-detectmobile/detect.js"></script>
+    <script src="assets/fastclick/fastclick.js"></script>
+    <script src="assets/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <script src="assets/jquery-blockui/jquery.blockUI.js"></script>
 
 
-<!-- CUSTOM JS -->
-<script src="js/jquery.app.js"></script>
+    <!-- CUSTOM JS -->
+    <script src="js/jquery.app.js"></script>
 
-<!-- Examples -->
-<script src="assets/magnific-popup/magnific-popup.js"></script>
-<script src="assets/jquery-datatables-editable/jquery.dataTables.js"></script>
-<script src="assets/datatables/dataTables.bootstrap.js"></script>
-<script src="assets/jquery-datatables-editable/datatables.editable.init.js"></script>
+    <!-- Examples -->
+    <script src="assets/magnific-popup/magnific-popup.js"></script>
+    <script src="assets/jquery-datatables-editable/jquery.dataTables.js"></script>
+    <script src="assets/datatables/dataTables.bootstrap.js"></script>
+    <script src="assets/jquery-datatables-editable/datatables.editable.init.js"></script>
 
 </body>
 </html>
