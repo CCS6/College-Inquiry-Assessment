@@ -1,5 +1,6 @@
 <?php
   include 'header.php';
+  include '../config.php';
   include '../classes/Users.php';
   $user = new Users();
   $result = $user->getUsers($db);
@@ -39,6 +40,7 @@
                                             <th>First Name</th>
                                             <th>Last Name</th>
                                             <th>User Name</th>
+                                            <th>Password</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -52,6 +54,7 @@
                                         <td><?=$key['acctType']?></td>
                                         <td><?=$key['firstName']?></td>
                                         <td><?=$key["lastName"]?></td>
+                                        <td><?=$key["username"]?></td>
                                         <td><?=$key["username"]?></td>
                                         <td class="actions">
                                                   <a href="#" data-rel="<?=$key['acctID']?>" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>

@@ -11,9 +11,9 @@
 	var page = pageURL.split('/');
 	'use strict';
 	if(page[page.length-1]=='users.php'){
-		var tablecol = [null, null, null, null, null, { "bSortable": false }]; //6
+		var tablecol = [null, null, null, null, null, null,{ "bSortable": false }]; //7
 	}else if(page[page.length-1]=='colleges.php'){
-		var tablecol = [null, null, null, null, null, null, null, { "bSortable": false }]; //6
+		var tablecol = [null, null, null, null, null, null, null, { "bSortable": false }]; //8
 	}else if(page[page.length-1]=='questions.php'){
 		var tablecol = [null, null, { "bSortable": false }];
 	}
@@ -139,7 +139,7 @@
 			].join(' ');
 
 			if(page[page.length-1] == 'users.php')
-				var colsToAdd = [ '', '', '','','', actions ];
+				var colsToAdd = [ '', '', '','','','', actions ];
 			else if(page[page.length-1] == 'colleges.php')
 				var colsToAdd = [ '', '', '','','', '', '', actions ];
 			else if(page[page.length-1] == 'questions.php')
@@ -223,7 +223,7 @@
 			if ( $actions.get(0) ) {
 				this.rowSetActionsDefault( $row );
 			}
-
+			
 			this.datatable.draw();
 		},
 
