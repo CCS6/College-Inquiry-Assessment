@@ -16,7 +16,7 @@
                         <!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="pull-left page-title">College Table</h4>
+                                <h4 class="pull-left page-title">Colleges Table</h4>
                             </div>
                         </div>
 
@@ -37,7 +37,7 @@
                                             <th>College ID</th>
                                             <th>College Code</th>
                                             <th>College Name</th>
-                                            <th>College Description</th>
+                                            <th>College About Info</th>
                                             <th>College Dean</th>
                                             <th>College Email</th>
                                             <th>College Phone Number</th>

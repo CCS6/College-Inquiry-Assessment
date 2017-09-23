@@ -16,7 +16,7 @@
                         <!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="pull-left page-title">College Table</h4>
+                                <h4 class="pull-left page-title">Questions Table</h4>
                             </div>
                         </div>
 

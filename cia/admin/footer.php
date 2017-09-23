@@ -52,15 +52,17 @@
     <script src="assets/jquery-slimscroll/jquery.slimscroll.js"></script>
     <script src="assets/jquery-blockui/jquery.blockUI.js"></script>
 
-
     <!-- CUSTOM JS -->
     <script src="js/jquery.app.js"></script>
+
 
     <!-- Examples -->
     <script src="assets/magnific-popup/magnific-popup.js"></script>
     <script src="assets/jquery-datatables-editable/jquery.dataTables.js"></script>
     <script src="assets/datatables/dataTables.bootstrap.js"></script>
     <script src="assets/jquery-datatables-editable/datatables.editable.init.js"></script>
+
+
 
 </body>
 </html>

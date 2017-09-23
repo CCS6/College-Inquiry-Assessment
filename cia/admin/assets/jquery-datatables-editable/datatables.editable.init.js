@@ -2,12 +2,21 @@
 * Theme: Montran Admin Template
 * Author: Coderthemes
 * Component: Editable
-* 
+*
 */
 
 (function( $ ) {
 
+	var pageURL = $(location).attr("href");
+	var page = pageURL.split('/');
 	'use strict';
+	if(page[page.length-1]=='users.php'){
+		var tablecol = [null, null, null, null, null, { "bSortable": false }]; //6
+	}else if(page[page.length-1]=='colleges.php'){
+		var tablecol = [null, null, null, null, null, null, null, { "bSortable": false }]; //6
+	}else if(page[page.length-1]=='questions.php'){
+		var tablecol = [null, null, { "bSortable": false }];
+	}
 
 	var EditableTable = {
 
@@ -43,12 +52,7 @@
 
 		build: function() {
 			this.datatable = this.$table.DataTable({
-				aoColumns: [
-					null,
-					null,
-					null,
-					{ "bSortable": false }
-				]
+				aoColumns: tablecol
 			});
 
 			window.dt = this.datatable;
@@ -134,7 +138,13 @@
 				'<a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>'
 			].join(' ');
 
-			data = this.datatable.row.add([ '', '', '', actions ]);
+			if(page[page.length-1] == 'users.php')
+				var colsToAdd = [ '', '', '','','', actions ];
+			else if(page[page.length-1] == 'colleges.php')
+				var colsToAdd = [ '', '', '','','', '', '', actions ];
+			else if(page[page.length-1] == 'questions.php')
+				var colsToAdd = [ '', '', actions ];
+			data = this.datatable.row.add(colsToAdd);
 			$row = this.datatable.row( data[0] ).nodes().to$();
 
 			$row

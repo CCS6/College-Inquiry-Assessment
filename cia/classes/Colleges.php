@@ -2,7 +2,6 @@
 include '../config.php';
 
 class Colleges{
-
     function __construct(){
     }
 

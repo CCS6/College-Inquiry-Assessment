@@ -1,3 +1,11 @@
+<?php
+session_start();
+require '../classes/Session.php';
+$s = new Session();
+if(!$s->isLoggedIn()){
+    header('Location:../login.php');
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,6 +31,10 @@
 
         <!-- Waves-effect -->
         <link href="css/waves-effect.css" rel="stylesheet">
+
+        <!-- Plugin Css-->
+        <link rel="stylesheet" href="assets/magnific-popup/magnific-popup.css" />
+        <link rel="stylesheet" href="assets/jquery-datatables-editable/datatables.css" />
 
         <!-- Custom Files -->
         <link href="css/helper.css" rel="stylesheet" type="text/css" />

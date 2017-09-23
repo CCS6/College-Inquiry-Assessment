@@ -1,7 +1,4 @@
 <!-- ========== Left Sidebar Start ========== -->
-<?php session_start(); require '../classes/Session.php';
-  $s = new Session();
-?>
 <div class="left side-menu">
     <div class="sidebar-inner slimscrollleft">
         <div class="user-details">
@@ -18,7 +15,7 @@
                     </ul>
                 </div>
 
-                <p class="text-muted m-0">Administrator</p>
+                <p class="text-muted m-0"><?=$_SESSION['type'];?></p>
             </div>
         </div>
         <!--- Divider -->
@@ -32,8 +29,8 @@
                     <a href="#" class="waves-effect"><i class="md md-view-list"></i><span> Content Tables </span><span class="pull-right"><i class="md md-add"></i></span></a>
                     <ul class="list-unstyled">
                         <li><a href="users.php">Users Table</a></li>
-                        <li><a href="question.php">Questions Table</a></li>
-                        <li><a href="college.php">Colleges Table</a></li>
+                        <li><a href="questions.php">Questions Table</a></li>
+                        <li><a href="colleges.php">Colleges Table</a></li>
                     </ul>
                 </li>
             </ul>

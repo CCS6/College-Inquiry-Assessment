@@ -1,4 +1,5 @@
 <?php include "header.php"; ?>
+<!--test-->
 <link href="css/agri-styles.css" rel="stylesheet">
 <section id="feature" class="section-padding wow fadeInUp delay-05s">
   <div class="col-md-12 text-center">
@@ -18,12 +19,11 @@
 
           <!-- Tab panes -->
           <div class="tab-content">
-              <div role="tabpanel" class="tab-pane active" id="about">The College of Agriculture emphasizes academic preparation with extensive community practice for leadership in rural Philippines. Courses are geared to understanding our society and to developing skills needed for making agricultural communities productive and financially viable. Silliman University College of Agriculture is an ACAP (Association of Colleges of Agriculture in the Philippines) charter member.<br /><br />
-The College offers degree programs in Bachelor of Science in Agriculture (majors in Animal Science and Agronomy), Bachelor of Science in Agricultural Business and Master in Applied Science (M.App.Sci.) in Systems Agriculture. The Bachelor of Science programs are PAASCU accredited (level II).<br /><br />
-Through a 10-year development program under the sponsorship of the International Development Program that ended in June 1994, a new thrust in learning and teaching agriculture was developed. The initial step was sending all the members of the faculty for either Special Study Program, Masteral or Ph.D. studies in Australia. The Alternative Approach, a new curricular approach that emphasizes experiential learning and systems thinking and practice is now being implemented at Silliman University College of Agriculture.<br /><br />
-The College of Agriculture utilizes an alternative approach to teaching and learning agriculture which emphasizes competency and issue-based learning.<br /><br />
-The competencies expected of a problem solver, and systems manager. It is envisioned that graduates with such competencies can cope with real world prob Federal Republic of Germany with a grant of $90,000. The College has modern lecture rooms and indoor laboratories for animal and plant sciences built in 1977 Another building unit composed of lecture rooms, a laboratory, a library and offices was built in 1980 through the joint support of the Evangelical Central Agency and the Coconut Federation of the Philippines (COCOFED). In addition, it has eight cottages for seniors and juniors constructed at a cost of P1.2 million donated by the COCOFED. <br /><br /></div>
-
+              <div role="tabpanel" class="tab-pane active" id="about">
+                <?php
+                    echo '<p class="text-muted">'.$_SESSION['agricultureAboutInfo'].'</p>';
+                ?>
+          </div>
               <div role="tabpanel" class="tab-pane" id="degrees">
                 <div id="degree-gap" class="container">
                   <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" data-html="true" title="Careers: Farm appraiser, Agricultural policy analyst, Farm manager, Crop producer<br />Grain and livestock buyer, Market analyst, Financer, Quality controller<br />Marketing head">
@@ -37,9 +37,21 @@ The competencies expected of a problem solver, and systems manager. It is envisi
                 </div>
               </div>
               <div role="tabpanel" class="tab-pane" id="messages">
-                  <i class="glyphicon glyphicon-user">Dean: Chona Fontelo Javier</i><br /><br />
-                  <i class="glyphicon glyphicon-earphone">Phone: 035 4225654</i><br /><br />
-                  <i class="glyphicon glyphicon-envelope">Email: aggies@su.edu.ph</i><br /><br />
+                  <i class="glyphicon glyphicon-user">
+                    <?php
+                        echo '<p class="text-muted">'.$_SESSION['agricultureDean'].'</p>';
+                    ?>
+                  </i><br /><br />
+                  <i class="glyphicon glyphicon-earphone">
+                    <?php
+                        echo '<p class="text-muted">'.$_SESSION['agriculturePhoneNumber'].'</p>';
+                    ?>
+                  </i><br /><br />
+                  <i class="glyphicon glyphicon-envelope">
+                    <?php
+                        echo '<p class="text-muted">'.$_SESSION['agricultureEmail'].'</p>';
+                    ?>
+                  </i><br /><br />
               </div>
           </div>
         </div>

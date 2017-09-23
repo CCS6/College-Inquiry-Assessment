@@ -1,4 +1,5 @@
 <?php include "header.php"; ?>
+<!--test-->
 <link href="css/agri-styles.css" rel="stylesheet">
 <section id="feature" class="section-padding wow fadeInUp delay-05s">
   <div class="col-md-12 text-center">
@@ -18,7 +19,11 @@
 
           <!-- Tab panes -->
           <div class="tab-content">
-              <div role="tabpanel" class="tab-pane active" id="about">The Silliman University College of Arts and Sciences is one of the constituent colleges of Silliman University, a private research university found in Dumaguete City, Province of Negros Oriental, Philippines. Granted Level III accreditation status by recognized accrediting agencies in the Philippine educational system, the College provides undergraduate and graduate instruction in various areas of learning such as in the fields of Anthropology,Creative Writing, English Language, Filipino, History, Literature, Philosophy, Political Science, Sociology, Physics, Chemistry, Biology, Mathematics among others.<br /><br />The College traces its origins to the year 1909 when the then Silliman Institute offered its first classical two-year A.B. course. In 1921, the College obtained recognition for its offering of a four-year A.B. degree. At about the same time, a science course was also offered, a B.S. degree major in Chemistry.<br /><br />During its early years of existence and up to the Second World War, the College operated under two independent colleges: the College of Liberal Arts and the College of Sciences, then administered by Silliman’s Department of Instruction. Over the years, these two colleges operated independently of each other. The departments that existed under the set-up were: Bible (1902); Biology (1909); Chemistry (1909); Mathematics (1920); English (1923); and Spanish (1936). In 1947, the College of Liberal Arts and the College of Sciences merged to become the College of Arts and Sciences.<br /><br /></div>
+              <div role="tabpanel" class="tab-pane active" id="about">
+                <?php
+                    echo '<p class="text-muted">'.$_SESSION['artscienceAboutInfo'].'</p>';
+                ?>
+              </div>
 
               <div role="tabpanel" class="tab-pane" id="degrees">
                 <div id="degree-gap" class="container">
@@ -43,9 +48,21 @@
                 </div>
               </div>
               <div role="tabpanel" class="tab-pane" id="messages">
-                  <i class="glyphicon glyphicon-user">Dean: Earl Jude Paul L. Cleope</i><br /><br />
-                  <i class="glyphicon glyphicon-earphone">Phone: 035 4226002 loc 300</i><br /><br />
-                  <i class="glyphicon glyphicon-envelope">Email: cas@su.edu.ph</i><br /><br />
+                  <i class="glyphicon glyphicon-user">
+                    <?php
+                        echo '<p class="text-muted">'.$_SESSION['artscienceDean'].'</p>';
+                    ?>
+                  </i><br /><br />
+                  <i class="glyphicon glyphicon-earphone">
+                    <?php
+                        echo '<p class="text-muted">'.$_SESSION['artsciencePhoneNumber'].'</p>';
+                    ?>
+                  </i><br /><br />
+                  <i class="glyphicon glyphicon-envelope">
+                    <?php
+                        echo '<p class="text-muted">'.$_SESSION['artscienceEmail'].'</p>';
+                    ?>
+                  </i><br /><br />
               </div>
           </div>
         </div>

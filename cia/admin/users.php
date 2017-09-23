@@ -34,7 +34,7 @@
                                 <table class="table table-bordered table-striped" id="datatable-editable">
                                     <thead>
                                         <tr>
-                                            <th>Account No</th>
+                                            <th>Account ID</th>
                                             <th>Account Type</th>
                                             <th>First Name</th>
                                             <th>Last Name</th>
@@ -44,11 +44,11 @@
                                     </thead>
                                     <tbody>
                                       <?php
+                                          $i=1;
                                           foreach($result as $key){
-
                                       ?>
                                       <tr class="gradeX">
-                                        <td><?=$key['acctID']?></td>
+                                        <td><?=$i++;?></td>
                                         <td><?=$key['acctType']?></td>
                                         <td><?=$key['firstName']?></td>
                                         <td><?=$key["lastName"]?></td>

@@ -1,11 +1,11 @@
 <?php
-  include 'header.php';
   require '../classes/Users.php';
   require '../config.php';
 
 
   $count = new Users();
   $userCount = $count->getTotalUsers($db);
+  include 'header.php';
 ?>
 
             <!-- ============================================================== -->
@@ -67,47 +67,4 @@
 
                 </div> <!-- content -->
 
-                <footer class="footer text-right">
-                    2015 © Moltran.
-                </footer>
-
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Right content here -->
-            <!-- ============================================================== -->
-
-        </div>
-        <!-- END wrapper -->
-
-
-
-        <script>
-            var resizefunc = [];
-        </script>
-
-        <!-- jQuery  -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/waves.js"></script>
-        <script src="js/wow.min.js"></script>
-        <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-        <script src="js/jquery.scrollTo.min.js"></script>
-
-        <!-- CUSTOM JS -->
-        <script src="js/jquery.app.js"></script>
-
-        <!-- Dashboard -->
-        <script src="js/jquery.dashboard.js"></script>
-
-        <!-- Chat -->
-        <script src="js/jquery.chat.js"></script>
-
-        <!-- Todo -->
-        <script src="js/jquery.todo.js"></script>
-
-        <!-- Chart JS -->
-        <script src="assets/chartjs/chart.min.js"></script>
-        <script src="assets/chartjs/chartjs.init.js"></script>
-
-    </body>
-</html>
+<?php include 'footer.php';?>
