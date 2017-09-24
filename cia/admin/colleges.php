@@ -1,5 +1,6 @@
 <?php
   include 'header.php';
+  include '../config.php';
   include '../classes/Colleges.php';
   $user = new Colleges();
   $result = $user->getColleges($db);

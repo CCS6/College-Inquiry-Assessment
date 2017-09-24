@@ -1,5 +1,6 @@
 <?php
   include 'header.php';
+  include '../config.php';
   include '../classes/Questions.php';
   $questions = new Questions();
   $result = $questions->getQuestions($db);
