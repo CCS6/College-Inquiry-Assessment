@@ -1,7 +1,7 @@
 <?php
 //check session
 require_once '../config.php';
-
+include '../classes/Users.php';
 
     $data = array(
         'acctType'=>'user',
@@ -10,10 +10,11 @@ require_once '../config.php';
         'username'=>strip_tags(trim($_POST['username'])),
         'password'=>md5(strip_tags(trim($_POST['password'])))
     );
-    $db->select()->from('account')->where('username',$data['username'])->execute();
-    if (($db->affected_rows)<1) {
-        $id = $db->insert("account",$data);//returns the last id inserted
-        $response = array('notice' => 'Success!','msg'=> "User[".$data['username']."] added.",'lastid'=>$id);
+    $user = new Users();
+    $result = $user->addUser($db,$data,$_POST['username']);
+
+    if ($result>0) {
+        $response = array('notice' => 'Success!','msg'=> "User[".$data['username']."] added.",'lastid'=>$result);
     } else {
         $response = array('notice'=>'Warning!','msg' => "The username[".$data['username']."] already exists.");
     }

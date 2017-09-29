@@ -1,8 +1,14 @@
 <?php
   include 'header.php';
-  include '../classes/Users.php';
-  $user = new Users();
-  $result = $user->getUsers($db);
+  include '../classes/Colleges.php';
+  $cd = new Colleges();
+  $result = $cd->getCollegeDegrees($db);
+
+/*
+echo '<pre>';
+print_r($result);
+die();*/
+
 ?>
 
             <!-- ============================================================== -->
@@ -16,7 +22,7 @@
                         <!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="pull-left page-title">Users Table</h4>
+                                <h4 class="pull-left page-title">College Degrees</h4>
                             </div>
                         </div>
 
@@ -31,35 +37,34 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <table class="table table-bordered table-striped" id="datatable-editable">
                                     <thead>
                                         <tr>
-                                            <!--<th>Cnt</th>-->
-                                            <th>User Type</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>User Name</th>
-                                            <th>Password</th>
+                                            <th>College Name</th>
+                                            <th>College Code</th>
+                                            <th>Degree Name</th>
+                                            <th>Degree Description</th>
+                                            <th>Jobs</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                       <?php
-                                          $i=1;
                                           foreach($result as $key){
+
                                       ?>
                                       <tr class="gradeX">
-                                        <!--<td><?=$i++;?></td>-->
-                                        <td><?=$key['userType']?></td>
-                                        <td><?=$key['firstName']?></td>
-                                        <td><?=$key["lastName"]?></td>
-                                        <td><?=$key["username"]?></td>
-                                        <td><?=$key["password"]?></td>
+                                        <td><?=$key['collegeName']?></td>
+                                        <td><?=$key['collegeCode']?></td>
+                                        <td><?=$key["degreeName"]?></td>
+                                        <td><?=$key["degreeDesc"]?></td>
+                                        <td><?=$key["degreeJobs"]?></td>
                                         <td class="actions">
-                                                  <a href="#" data-rel="<?=$key['userID']?>" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                                  <a href="#" data-rel="<?=$key['degreeID']?>" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                                   <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                                  <a href="#" data-rel="<?=$key['userID']?>" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                                  <a href="#" data-rel="<?=$key['userID']?>" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                                  <a href="#" data-rel="<?=$key['degreeID']?>" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                  <a href="#" data-rel="<?=$key['degreeID']?>" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                       </tr>
                                       <?php

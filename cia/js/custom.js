@@ -68,7 +68,7 @@
                 success: function(data){
                     if(data['notice'] == "Error!"){
                             clearLoginForm();
-                            confirmMessageLogin('alert-danger',"Username or password doesn't exist.");
+                            confirmMessageLogin('alert-danger',"Username doesn't exist.");
                         }
                     else{
                             clearLoginForm();
@@ -93,29 +93,24 @@
             $('#register-btn').html('<strong>Oops!</strong>Please Fill All Required Fields!').fadeIn(2000);
             setTimeout(timeout('#register-btn', '<strong>Oops!</strong>Please Fill All Required Fields!'),2000);
         }
-        else if(d!=e){
-            $('#register-btn').addClass('alert-danger');
-            $('#register-btn').html('<strong>Oops!</strong>Your password does not match. Please try again.').fadeIn(2000);
-            setTimeout(timeout('#register-btn', '<strong>Oops!</strong>Your password does not match. Please try again.'),2000);
-        }
         else{
-        var str = $('form[name=registration-form]').serializeArray();
-        $.ajax({
-            type: "POST",
-            url: 'actions/register.php',
-            dataType: 'json',
-            data: str,
-            success: function(data){
-                if(data['notice'] == "Success!"){
-                    clearRegistrationForm();
-                    confirmMessageRegister('alert-success','Record successfully added.');
+            var str = $('form[name=registration-form]').serializeArray();
+            $.ajax({
+                type: "POST",
+                url: 'actions/register.php',
+                dataType: 'json',
+                data: str,
+                success: function(data){
+                    if(data['notice'] == "Success!"){
+                        clearRegistrationForm();
+                        confirmMessageRegister('alert-success','Record successfully added.');
+                    }
+                    else{
+                        clearRegistrationForm();
+                        confirmMessageRegister('alert-danger','Username already exists.');
+                    }
                 }
-                else{
-                    clearRegistrationForm();
-                    confirmMessageRegister('alert-danger','Username already exists.');
-                }
-            }
-        });
+            });
         }
     });
 
@@ -172,13 +167,13 @@
 
     function timeoutAdminLogin(obj,htmlText){
         $(obj).html(htmlText).fadeOut(2000,function(){
-            window.location = '../admin/index.php';
+            window.location = 'admin/index.php';
         });
     }
 
     function timeoutUserLogin(obj,htmlText){
         $(obj).html(htmlText).fadeOut(2000,function(){
-            window.location = '../index.php';
+            window.location = 'index.php';
         });
     }
 
@@ -198,4 +193,9 @@
         });
     };
 
+    $('.save-row,.save-row').click(function(e){
+        e.preventDefault();
+        alert();
+
+    });
 })(jQuery);

@@ -15,7 +15,7 @@
          <img class="team-pic" src="img/20819343_851506305010941_8992152039636009533_o.jpg">
         <div class="caption">
           <h3>Derick Ho</h3>
-          <p class="card-description">BSCS-III</p>
+          <p class="card-description">A customized about us page design using bootstrap framework, HTML and CSS.</p>
           <p class="social"><a href=""><i class="fa fa-facebook"></i></a></p>
         </div>
       </div>
@@ -27,7 +27,7 @@
          <img class="team-pic" src="img/13006598_999938766759664_6860126981732108419_n.jpg">
         <div class="caption">
           <h3>Charles Cariño</h3>
-          <p class="card-description">BSCS-III</p>
+          <p class="card-description">A customized about us page design using bootstrap framework, HTML and CSS.</p>
           <p class="social"><a href=""><i class="fa fa-facebook"></i></a> <a href=""><i class="fa fa-github"></i></a></p>
         </div>
       </div>
@@ -39,8 +39,8 @@
           <img class="team-pic" src="img/20621099_1621977307875142_7182323348226083932_n.jpg">
         <div class="caption">
           <h3>Seth Cornelio</h3>
-          <p class="card-description">BSCS-III</p>
-          <p class="social"><a href=""><i class="fa fa-facebook"></i></a> <a href=""><i class="fa fa-twitter"></i></a> <a href=""><i class="fa fa-instagram"></i></a></p>
+          <p class="card-description">A customized about us page design using bootstrap framework, HTML and CSS.</p>
+          <p class="social"><a href=""><i class="fa fa-facebook"></i></a> <a href=""><i class="fa fa-twitter"></i></a> <a href=""><i class="fa fa-google-plus"></i></a></p>
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@
          <img class="team-pic" src="img/16665275_1232677693452918_688165418877697166_o.jpg">
         <div class="caption">
           <h3>Samuel Akinbode</h3>
-          <p class="card-description">BSCS-III</p>
+          <p class="card-description">A customized about us page design using bootstrap framework, HTML and CSS.</p>
           <p class="social"><a href=""><i class="fa fa-facebook"></i></a> <a href=""><i class="fa fa-twitter"></i></a> <a href=""><i class="fa fa-linkedin"></i></a> <a href=""><i class="fa fa-google-plus"></i></a></p>
         </div>
       </div>

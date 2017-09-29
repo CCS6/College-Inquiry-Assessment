@@ -1,5 +1,7 @@
-<?php session_start(); require 'classes/Session.php';
-  $s = new Session();
+<?php
+session_start();
+require 'classes/Session.php';
+$s = new Session();
 ?>
 <!DOCTYPE html>
 <html lang="en">

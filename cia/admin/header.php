@@ -1,7 +1,10 @@
 <?php
 session_start();
+include '../config.php';
 require '../classes/Session.php';
+
 $s = new Session();
+//print_r($_SESSION);
 if(!$s->isLoggedIn()){
     header('Location:../login.php');
 }
@@ -85,6 +88,7 @@ if(!$s->isLoggedIn()){
                             </ul>
                         </div>
                         <!--/.nav-collapse -->
+
                     </div>
                 </div>
             </div>

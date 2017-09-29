@@ -24,15 +24,13 @@
                 <li>
                     <a href="index.php" class="waves-effect active"><i class="md md-home"></i><span> Dashboard </span></a>
                 </li>
+                <li><a href="users.php" class="waves-effect"><i class="md ion-android-social"></i>Users</a></li>
+                <li><a href="colleges.php" class="waves-effect"><i class="md md-school"></i>Colleges</a></li>
+                <li><a href="collegedegrees.php" class="waves-effect"><i class="md md-book"></i>College Degrees</a></li>
+                <li><a href="questions.php" class="waves-effect"><i class="md md-question-answer"></i>Questions</a></li>
+                <li><a href="answerkeys.php" class="waves-effect"><i class="md md-vpn-key"></i>Answer Keys</a></li>
+                <li><a href="assesments.php" class="waves-effect"><i class="md md-view-list"></i>Assesment Records</a></li>
 
-                <li class="has_sub">
-                    <a href="#" class="waves-effect"><i class="md md-view-list"></i><span> Content Tables </span><span class="pull-right"><i class="md md-add"></i></span></a>
-                    <ul class="list-unstyled">
-                        <li><a href="users.php">Users Table</a></li>
-                        <li><a href="questions.php">Questions Table</a></li>
-                        <li><a href="colleges.php">Colleges Table</a></li>
-                    </ul>
-                </li>
             </ul>
             <div class="clearfix"></div>
         </div>

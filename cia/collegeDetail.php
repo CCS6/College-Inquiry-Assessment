@@ -9,7 +9,7 @@ if(empty($_GET)){
   echo 'Page not Found!';
 }else{
 
-  $result = $c->getCollegedetail($db,$_GET['code']);;
+  $result = $c->getCollegedetail($db,$_GET['code']);
 ?>
 
 <link href="css/agri-styles.css" rel="stylesheet">
@@ -32,7 +32,7 @@ if(empty($_GET)){
             <!-- Tab panes -->
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane active" id="about">
-                <?=$result[0]['collegeAboutInfo']?><br /><br />
+                <?=$result[0]['collegeDesc']?><br /><br />
               </div>
 
               <div role="tabpanel" class="tab-pane" id="degrees">
@@ -48,9 +48,9 @@ if(empty($_GET)){
                 </div>
               </div>
               <div role="tabpanel" class="tab-pane" id="messages">
-                <i class="glyphicon glyphicon-user"><?=$result[0]['collegeDean']?></i><br /><br />
-                <i class="glyphicon glyphicon-earphone"><?=$result[0]['collegePhoneNumber']?></i><br /><br />
-                <i class="glyphicon glyphicon-envelope"><?=$result[0]['collegeEmail']?></i><br /><br />
+                <i class="glyphicon glyphicon-user"><?= $result[0]['collegeDean']?></i><br /><br />
+                <i class="glyphicon glyphicon-earphone"><?= $result[0]['collegePhoneNumber']?></i><br /><br />
+                <i class="glyphicon glyphicon-envelope"><?= $result[0]['collegeEmail']?></i><br /><br />
               </div>
             </div>
           </div>

@@ -62,7 +62,7 @@
     <script src="assets/datatables/dataTables.bootstrap.js"></script>
     <script src="assets/jquery-datatables-editable/datatables.editable.init.js"></script>
 
-
+    <!--<script src="js/customapp.js"></script>-->
 
 </body>
 </html>

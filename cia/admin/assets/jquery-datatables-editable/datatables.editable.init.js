@@ -7,15 +7,19 @@
 
 (function( $ ) {
 
-	var pageURL = $(location).attr("href");
-	var page = pageURL.split('/');
+	var pageURL = $(location).attr("href");;
+	//console.log(pageURL);
+	var arr = pageURL.split('/');
+	//console.log(arr[arr.length-1]);
+	var page = arr[arr.length-1];
+
+
 	'use strict';
-	if(page[page.length-1]=='users.php'){
-		var tablecol = [null, null, null, null, null, null,{ "bSortable": false }]; //7
-	}else if(page[page.length-1]=='colleges.php'){
-		var tablecol = [null, null, null, null, null, null, null, { "bSortable": false }]; //8
-	}else if(page[page.length-1]=='questions.php'){
-		var tablecol = [null, null, { "bSortable": false }];
+
+	if(arr[arr.length-1]=='users.php'){
+		var tablecol = [null, null, null, null, null,null, { "bSortable": false }]; //6
+	}else if(arr[arr.length-1]=='colleges.php'){
+		var tablecol = [null, null, null, null, { "bSortable": false }]; //5
 	}
 
 	var EditableTable = {
@@ -52,7 +56,10 @@
 
 		build: function() {
 			this.datatable = this.$table.DataTable({
-				aoColumns: tablecol
+				//aoColumns: tablecol  //reference fix: https://stackoverflow.com/questions/37602081/adding-table-data-to-editable-datatables-removes-filters
+				columnDefs: [
+					{ targets: -1, orderable: false }
+				]
 			});
 
 			window.dt = this.datatable;
@@ -67,7 +74,9 @@
 				.on('click', 'a.save-row', function( e ) {
 					e.preventDefault();
 
-					_self.rowSave( $(this).closest( 'tr' ) );
+					var id = $(this).attr('data-rel');
+
+					_self.rowSave( $(this).closest( 'tr' ), id);
 				})
 				.on('click', 'a.cancel-row', function( e ) {
 					e.preventDefault();
@@ -84,6 +93,9 @@
 
 					var $row = $(this).closest( 'tr' );
 
+					//get user id
+					var id = $(this).attr('data-rel');
+
 					$.magnificPopup.open({
 						items: {
 							src: _self.options.dialog.wrapper,
@@ -96,7 +108,7 @@
 								_self.dialog.$confirm.on( 'click', function( e ) {
 									e.preventDefault();
 
-									_self.rowRemove( $row );
+									_self.rowRemove( $row, id );
 									$.magnificPopup.close();
 								});
 							},
@@ -129,7 +141,8 @@
 
 			var actions,
 				data,
-				$row;
+				$row,
+				colstoAdd;
 
 			actions = [
 				'<a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>',
@@ -138,15 +151,19 @@
 				'<a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>'
 			].join(' ');
 
-			if(page[page.length-1] == 'users.php')
-				var colsToAdd = [ '', '', '','','','', actions ];
-			else if(page[page.length-1] == 'colleges.php')
-				var colsToAdd = [ '', '', '','','', '', '', actions ];
-			else if(page[page.length-1] == 'questions.php')
-				var colsToAdd = [ '', '', actions ];
-			data = this.datatable.row.add(colsToAdd);
-			$row = this.datatable.row( data[0] ).nodes().to$();
+			/*if(arr[arr.length-1]=='users.php'){
+				colstoAdd = [ '', '', '','','','', actions ];
+			}
+			data = this.datatable.row.add(colstoAdd);*/
 
+			var numCols = this.datatable.columns().nodes().length;
+			var rowData = [];
+			for(var i = 0; i < numCols - 1; i++){ rowData.push(''); }
+			rowData.push(actions);
+			data = this.datatable.row.add(rowData);
+
+
+			$row = this.datatable.row( data[0] ).nodes().to$();
 			$row
 				.addClass( 'adding' )
 				.find( 'td:last' )
@@ -191,46 +208,229 @@
 				if ( $this.hasClass('actions') ) {
 					_self.rowSetActionsEditing( $row );
 				} else {
-					$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '"/>' );
+
+					if(page=='users.php'){
+
+						/*if(i==0){
+							$this.html( '<input type="text" readonly class="form-control input-block" value="' + data[i] + '"/>' );
+						}else*/
+						if(i==0){
+							$this.html( '<select name="usertype" class="form-control input-block">'+
+								'<option value="admin">admin</option>'+
+								'<option value="user">user</option>'+
+								'</select>' );
+						}else if(i==4){
+							$this.html( '<input type="password" class="form-control input-block" value="' + data[i] + '"/>' );
+						}
+						else{
+							$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '"/>' );
+						}
+					}
 				}
 			});
 		},
 
-		rowSave: function( $row ) {
+		rowSave: function( $row, objID ) {
 			var _self     = this,
 				$actions,
 				values    = [];
-
-			if ( $row.hasClass( 'adding' ) ) {
-				this.$addButton.removeAttr( 'disabled' );
-				$row.removeClass( 'adding' );
-			}
-
-			values = $row.find('td').map(function() {
+			/*values = $row.find('td').map(function() {
 				var $this = $(this);
 
 				if ( $this.hasClass('actions') ) {
 					_self.rowSetActionsDefault( $row );
 					return _self.datatable.cell( this ).data();
-				} else {
-					return $.trim( $this.find('input').val() );
 				}
-			});
+				//else if($this.find('option:selected')){
+				//	console.log('selected:'+$this.find('option:selected'));
+				//	return $.trim($this.find('option:selected').val());
+				//}
+				else{
+					console.log('input:'+$this.find('input'));
+					return $.trim($this.find('input').val());
+				}
+			});*/
 
-			this.datatable.row( $row.get(0) ).data( values );
+			var hasAdding = $row.hasClass( 'adding' );
 
-			$actions = $row.find('td.actions');
-			if ( $actions.get(0) ) {
-				this.rowSetActionsDefault( $row );
+			//Add user
+			if(hasAdding){
+				//if ( $row.hasClass( 'adding' ) ) {
+					$row.addClass( 'adding' );
+					_self.rowSetActionsEditing( $row );
+
+					//highlight username value
+					$row.find('input')[2].select();
+				//}
+
+				values = $row.find('td').map(function() {
+					var $this = $(this);
+
+					if ( $this.hasClass('actions') ) {
+						_self.rowSetActionsDefault( $row );
+						return _self.datatable.cell( this ).data();
+					}else{
+						return $.trim( $this.find('.input-block').val() );
+					}
+				});
+
+
+				var invalid = false;
+				var alertmsg = '';
+
+				/*$.post('actions/add.php',{'values':values.toArray()})
+				 .done(
+				 function(data){
+				 var j = $.parseJSON(data);
+				 console.log('Notice:'+j.notice);
+				 if(j.notice == "Success!"){
+				 invalid = false;
+				 }else{
+				 invalid=true;
+				 }
+				 }
+				 );*/
+
+				$.ajax({
+					url:'actions/add.php',
+					postType:'json',
+					type:'post',
+					data:{'userID':objID,'page':page,'values':values.toArray()},
+					success:function(data){
+
+						var j = $.parseJSON(data);
+						//console.log('Notice:'+j.notice);
+						if(j.notice == "Success!"){
+							invalid = false;
+						}else{
+							invalid=true;
+							alertmsg = j.notice+' '+ j.msg;
+						}
+					},
+					async:false
+				});
+
+				if(invalid){
+
+					alert(alertmsg);
+
+					if ( $row.hasClass( 'adding' ) ) {
+						$row.addClass( 'adding' );
+						_self.rowSetActionsEditing( $row );
+
+						//highlight username value
+						$row.find('input')[2].select();
+					}
+				}else{
+
+					/*if ( $row.hasClass( 'adding' ) ) {
+					 console.log('Has adding...');
+					 }*/
+
+					this.datatable.row( $row.get(0) ).data( values );
+
+					$actions = $row.find('td.actions');
+
+					if ( $actions.get(0) ) {
+						this.rowSetActionsDefault( $row );
+					}
+					this.datatable.draw();
+
+					location.reload();
+
+				}
 			}
-			
-			this.datatable.draw();
+			else{
+				//Update user
+				values = $row.find('td').map(function() {
+					var $this = $(this);
+
+					if ( $this.hasClass('actions') ) {
+						_self.rowSetActionsDefault( $row );
+						return _self.datatable.cell( this ).data();
+					}else{
+						return $.trim( $this.find('.input-block').val() );
+					}
+				});
+
+
+				var invalid = false;
+				var alertmsg = '';
+
+				$.ajax({
+					url:'actions/edit.php',
+					postType:'json',
+					type:'post',
+					data:{'userID':objID,'page':page,'values':values.toArray()},
+					success:function(data){
+
+						var j = $.parseJSON(data);
+
+						if(j.notice == "Success!"){
+							invalid = false;
+						}else{
+							invalid=true;
+							alertmsg = j.notice+' '+ j.msg;
+						}
+					},
+					async:false
+				});
+				//console.log(invalid);
+				if(invalid){
+
+					alert(alertmsg);
+
+					if ( $row.hasClass( 'adding' ) ) {
+						$row.addClass( 'adding' );
+						_self.rowSetActionsEditing( $row );
+
+						//highlight username value
+						$row.find('input')[2].select();
+					}
+				}else{
+
+					this.datatable.row( $row.get(0) ).data( values );
+
+					$actions = $row.find('td.actions');
+
+					if ( $actions.get(0) ) {
+						this.rowSetActionsDefault( $row );
+					}
+					this.datatable.draw();
+
+					location.reload(true);
+
+				}
+			}
 		},
 
-		rowRemove: function( $row ) {
+		rowRemove: function( $row, id ) {
 			if ( $row.hasClass('adding') ) {
 				this.$addButton.removeAttr( 'disabled' );
 			}
+
+			//ajax call
+			$.ajax({
+				url:'actions/delete.php',
+				postType:'json',
+				type:'post',
+				data:{'id':id,'page':page},
+				success:function(data){
+
+					location.reload();
+
+					//console.log(data);
+					/*var j = $.parseJSON(data);
+					 //console.log('Notice:'+j.notice);
+					 if(j.notice == "Success!"){
+					 invalid = false;
+					 }else{
+					 invalid=true;
+					 alertmsg = j.notice+' '+ j.msg;
+					 }*/
+				},
+				async:false
+			});
 
 			this.datatable.row( $row.get(0) ).remove().draw();
 		},
@@ -247,8 +447,12 @@
 
 	};
 
+
 	$(function() {
 		EditableTable.initialize();
+
+		//EditableTable.rowSave(dataArr);
 	});
+
 
 }).apply( this, [ jQuery ]);
