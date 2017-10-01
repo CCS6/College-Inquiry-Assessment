@@ -2,25 +2,22 @@
 require_once '../../config.php';
 include '../../classes/Users.php';
 include '../../classes/Colleges.php';
+include '../../classes/Questions.php';
+include '../../classes/Degrees.php';
+include '../../classes/AnswerKeys.php';
 
 $data = array(
-    'id'=>strip_tags(trim($_POST['userID'])),
+    'id'=>strip_tags(trim($_POST['ID'])),
     'table'=>strip_tags(trim($_POST['page'])),
     'values'=>$_POST['values']
 );
-
-//print_r($data);
-
-
 if(!empty($_POST)){
 
     if($data['table'] == 'users.php') {
         $o = new Users();
 
-        $columns = ['userType', 'firstName', 'lastName', 'username', 'password'];
-
-        //getcurret password of the username passed
-        $result = $o->getUser($db,$data['values'][3]);//$data['id']
+        $columns = ['userType', 'firstName', 'lastName', 'username', 'password','resultCollege'];
+         $result = $o->getUserbyUsername($db,$data['values'][3]);//$data['id']
 
         $unameexists = false;
         $selfrecord = false;
@@ -30,14 +27,8 @@ if(!empty($_POST)){
         $newdata = array();
 
         if(count($result)>0){
-
-            //echo "naay kapareha ug uname\n";
-
             $unameexists = true;
             $selfrecord = true;
-
-            //echo 'Data fetch: '.$result[0]['userID']." == ".' Data pass: '.$data['id'];
-            //compare username
             if($result[0]['userID'] == $data['id']){
                 $selfrecord = true;
             }else{
@@ -58,8 +49,7 @@ if(!empty($_POST)){
                     $newdata['username'] = $data['values'][3];
                     $unameupdated = true;
                 }
-
-                if ($result[0]['password'] !=   ($data['values'][4])) {
+                if ($result[0]['password'] != $data['values'][4]) {
                     $newdata['password'] = md5($data['values'][4]);
                     $upwupdated = true;
                 }
@@ -73,11 +63,7 @@ if(!empty($_POST)){
                 $response = array('notice' => 'Warning!','msg' => "Username [".$data['values'][3]."] already exists.");
 
             }
-
-        }else{
-            //walay kapareha ug uname
-            //echo "walay kapareha ug uname\n";
-            //store values to newdata array
+          }else{
             for ($i = 0; $i < count($data['values']) - 1; $i++) {
                 $newdata[$columns[$i]] = $data['values'][$i];
 
@@ -85,21 +71,79 @@ if(!empty($_POST)){
                     $newdata[$columns[$i]] = md5($data['values'][$i]);
                 }
             }
-            //print_r($newdata);
 
             $result = $o->editUser($db, $data['id'], $data['table'], $newdata);
             $response = array('notice' => 'Success!','msg' => 'Record successfully updated.','lastid'=>$result);
         }
 
     }else if($data['table'] == 'colleges.php'){
-
         $o = new Colleges();
-        $result = $o->editCollege($db,$data['id'],$data['table']);
+        $columns = ['collegeCode', 'collegeName', 'collegeAboutInfo', 'collegeDean', 'collegeEmail', 'collegePhoneNumber'];
 
-    }else{
-        //$o = new Questions();
+        $result = $o->getCollegeDetail($db,$data['values'][0]);
+
+        $newData = array();
+
+        for ($i = 0; $i < count($data['values']) - 1; $i++) {
+            if($i == 2)
+                $newdata[$columns[$i]] = nl2br($data['values'][$i]);
+            else
+                $newdata[$columns[$i]] = $data['values'][$i];
+        }
+
+
+        $result = $o->editCollege($db, $data['id'], $data['table'], $newdata);
+
+        $response = array('notice' => 'Success!','msg' => 'Record successfully updated.','lastid'=>$result);
+
+    }else if($data['table'] == 'questions.php'){
+        $o = new Questions();
+        $columns = ['questionText'];
+
+        $result = $o->getQuestionDetail($db,$data['id']);
+        $newData = array();
+
+        for ($i = 0; $i < count($data['values']) - 1; $i++) {
+            $newdata[$columns[$i]] = $data['values'][$i];
+        }
+
+        $result = $o->editQuestion($db, $data['id'], $data['table'], $newdata);
+
+        $response = array('notice' => 'Success!','msg' => 'Record successfully updated.','lastid'=>$result);
+    }else if($data['table'] == 'collegedegrees.php'){
+        $o = new Degrees();
+        $columns = ['degreeCode','degreeDesc','degreeJobs'];
+        print_r($data);
+
+        $result = $o->getDegreeDetail($db,$data['id']);
+        $newData = array();
+        for ($i = 0; $i < count($data['values']) - 1; $i++) {
+            if($i < 2)
+                continue;
+            else
+                $newData[$columns[$i-2]] = $data['values'][$i];
+        }
+        $result = $o->editDegree($db, $data['id'], $newData);
+
+        $response = array('notice' => 'Success!','msg' => 'Record successfully updated.','lastid'=>$result);
+    }else if($data['table'] == 'answerkeys.php'){
+        $o = new AnswerKeys();
+        $columns = ['collegeID','questionID','answer'];
+        print_r($data);
+
+        $result = $o->getDegreeDetail($db,$data['id']);
+        $newData = array();
+        // for ($i = 0; $i < count($data['values']) - 1; $i++) {
+        //     if($i < 2)
+        //         continue;
+        //     else
+        //         $newData[$columns[$i-2]] = $data['values'][$i];
+        // }
+
+        $result = $o->editDegree($db, $data['id'], $newData);
+
+        $response = array('notice' => 'Success!','msg' => 'Record successfully updated.','lastid'=>$result);
     }
-
     echo json_encode($response);
 }
 ?>

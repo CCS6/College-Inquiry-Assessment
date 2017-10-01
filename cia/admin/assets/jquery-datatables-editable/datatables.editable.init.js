@@ -15,12 +15,12 @@
 
 
 	'use strict';
-
-	if(arr[arr.length-1]=='users.php'){
-		var tablecol = [null, null, null, null, null,null, { "bSortable": false }]; //6
-	}else if(arr[arr.length-1]=='colleges.php'){
-		var tablecol = [null, null, null, null, { "bSortable": false }]; //5
-	}
+	//
+	// if(arr[arr.length-1]=='users.php'){
+	// 	var tablecol = [null, null, null, null, null,null, { "bSortable": false }]; //6
+	// }else if(arr[arr.length-1]=='colleges.php'){
+	// 	var tablecol = [null, null, null, null, { "bSortable": false }]; //5
+	// }
 
 	var EditableTable = {
 
@@ -71,12 +71,29 @@
 			var _self = this;
 
 			this.$table
+				.on('change', 'select[name="collegename"]', function( e ) {
+					e.preventDefault();
+
+					var str = $('select[name="collegename"]').val();
+					var optionVal = str.split('-');
+					var x = $(this).closest( 'tr' ).find('input')[0];
+					$(x).val(optionVal[1]);
+				})
 				.on('click', 'a.save-row', function( e ) {
 					e.preventDefault();
 
-					var id = $(this).attr('data-rel');
-
-					_self.rowSave( $(this).closest( 'tr' ), id);
+					if(page=='collegedegrees.php'){
+						if($('select[name="collegename"]').val() == '')
+							alert('Please select college.');
+						else{
+							var id = $(this).attr('data-rel');
+							_self.rowSave( $(this).closest( 'tr' ),id);
+						}
+					}
+					else{
+						var id = $(this).attr('data-rel');
+						_self.rowSave( $(this).closest( 'tr' ), id);
+					}
 				})
 				.on('click', 'a.cancel-row', function( e ) {
 					e.preventDefault();
@@ -199,7 +216,9 @@
 		rowEdit: function( $row ) {
 			var _self = this,
 				data;
-
+			var options = '';
+			var optionsCollege = '';
+			var optionsQuestion = '';
 			data = this.datatable.row( $row.get(0) ).data();
 
 			$row.children( 'td' ).each(function( i ) {
@@ -208,12 +227,7 @@
 				if ( $this.hasClass('actions') ) {
 					_self.rowSetActionsEditing( $row );
 				} else {
-
 					if(page=='users.php'){
-
-						/*if(i==0){
-							$this.html( '<input type="text" readonly class="form-control input-block" value="' + data[i] + '"/>' );
-						}else*/
 						if(i==0){
 							$this.html( '<select name="usertype" class="form-control input-block">'+
 								'<option value="admin">admin</option>'+
@@ -222,9 +236,64 @@
 						}else if(i==4){
 							$this.html( '<input type="password" class="form-control input-block" value="' + data[i] + '"/>' );
 						}
+						else if(i==5)
+							$this.html( '<input type="text" readonly class="form-control input-block" value="' + data[i] + '"/>' );
 						else{
 							$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '"/>' );
 						}
+					}
+					else if(page=='colleges.php'){
+							$this.html( '<textarea class="form-control input-block value="'+ data[i] +'">'+ data[i] +'</textarea>' );
+					}
+					else if(page=='questions.php'){
+							$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '"/>' );
+					}
+					else if(page=='collegedegrees.php' || page=='answerkeys.php'){
+						if(i==0){
+							$.ajax({
+								url: 'actions/getObject.php',
+								type: 'post',
+								dataType: 'json',
+								data: {'page':page},
+								success:function(data){
+									var i;
+									var j = Object.values(data);
+									if(page=='collegedegrees.php'){
+										for(i = 0;i < Object.keys(data).length;i++)
+											options += '<option value="'+j[i]['collegeID']+'-'+j[i]['collegeCode']+'">'+j[i]['collegeName']+'-'+j[i]['collegeCode']+'</option>';
+									}
+									else{
+										for(i = 0;i < Object.keys(data[1]).length;i++)
+											optionsQuestion += '<option value="'+j[1][i]['questionID']+'-'+j[1][i]['questionText']+'">'+j[1][i]['questionText']+'</option>';
+										for(i = 0;i < Object.keys(data[0]).length;i++)
+											optionsCollege += '<option value="'+j[0][i]['collegeID']+'-'+j[0][i]['collegeCode']+'">'+j[0][i]['collegeName']+'-'+j[0][i]['collegeCode']+'</option>';
+										}
+								},
+								async:false
+							});
+							if(page=='collegedegrees.php')
+								$this.html('<select name="collegename" class="form-control input-block"><option value="">Select College</option>'+options+'</select>');
+							else
+								$this.html('<select name="collegename" class="form-control input-block"><option value="">Select College</option>'+optionsCollege+'</select>');
+						}
+						else if(i==1){
+							if(page=='collegedegrees.php')
+								$this.html( '<input type="text" readonly class="form-control input-block" value="' + data[i] + '"/>' );
+							else
+								$this.html('<select name="questionname" class="form-control input-block"><option value="">Select Question</option>'+optionsQuestion+'</select>');
+						}
+						else if(i==2){
+							if(page=='answerkeys.php')
+								$this.html('<select name="questionname" class="form-control input-block"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>');
+						}
+
+						else if(i==4)
+							$this.html( '<textarea class="form-control input-block value="'+ data[i] +'">'+ data[i] +'</textarea>' );
+						else
+							$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '"/>' );
+					}
+					else if(page=='answerkeys.php'){
+
 					}
 				}
 			});
@@ -234,22 +303,6 @@
 			var _self     = this,
 				$actions,
 				values    = [];
-			/*values = $row.find('td').map(function() {
-				var $this = $(this);
-
-				if ( $this.hasClass('actions') ) {
-					_self.rowSetActionsDefault( $row );
-					return _self.datatable.cell( this ).data();
-				}
-				//else if($this.find('option:selected')){
-				//	console.log('selected:'+$this.find('option:selected'));
-				//	return $.trim($this.find('option:selected').val());
-				//}
-				else{
-					console.log('input:'+$this.find('input'));
-					return $.trim($this.find('input').val());
-				}
-			});*/
 
 			var hasAdding = $row.hasClass( 'adding' );
 
@@ -260,7 +313,7 @@
 					_self.rowSetActionsEditing( $row );
 
 					//highlight username value
-					$row.find('input')[2].select();
+					//$row.find('input')[2].select();
 				//}
 
 				values = $row.find('td').map(function() {
@@ -277,20 +330,6 @@
 
 				var invalid = false;
 				var alertmsg = '';
-
-				/*$.post('actions/add.php',{'values':values.toArray()})
-				 .done(
-				 function(data){
-				 var j = $.parseJSON(data);
-				 console.log('Notice:'+j.notice);
-				 if(j.notice == "Success!"){
-				 invalid = false;
-				 }else{
-				 invalid=true;
-				 }
-				 }
-				 );*/
-
 				$.ajax({
 					url:'actions/add.php',
 					postType:'json',
@@ -318,14 +357,13 @@
 						$row.addClass( 'adding' );
 						_self.rowSetActionsEditing( $row );
 
-						//highlight username value
-						$row.find('input')[2].select();
+						if(page=='collegedegrees.php')
+							$row.find('input')[1].select();
+						else if(page=='users.php')
+							//highlight username value
+							$row.find('input')[2].select();
 					}
 				}else{
-
-					/*if ( $row.hasClass( 'adding' ) ) {
-					 console.log('Has adding...');
-					 }*/
 
 					this.datatable.row( $row.get(0) ).data( values );
 
@@ -356,12 +394,11 @@
 
 				var invalid = false;
 				var alertmsg = '';
-
 				$.ajax({
 					url:'actions/edit.php',
 					postType:'json',
 					type:'post',
-					data:{'userID':objID,'page':page,'values':values.toArray()},
+					data:{'ID':objID,'page':page,'values':values.toArray()},
 					success:function(data){
 
 						var j = $.parseJSON(data);
@@ -375,7 +412,7 @@
 					},
 					async:false
 				});
-				//console.log(invalid);
+				console.log(invalid);
 				if(invalid){
 
 					alert(alertmsg);
@@ -418,16 +455,6 @@
 				success:function(data){
 
 					location.reload();
-
-					//console.log(data);
-					/*var j = $.parseJSON(data);
-					 //console.log('Notice:'+j.notice);
-					 if(j.notice == "Success!"){
-					 invalid = false;
-					 }else{
-					 invalid=true;
-					 alertmsg = j.notice+' '+ j.msg;
-					 }*/
 				},
 				async:false
 			});

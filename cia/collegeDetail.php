@@ -2,14 +2,15 @@
 include "header.php";
 include 'config.php';
 include 'classes/Colleges.php';
+include 'classes/Degrees.php';
 
 $c = new Colleges();
-
+$d = new Degrees();
 if(empty($_GET)){
   echo 'Page not Found!';
 }else{
-
   $result = $c->getCollegedetail($db,$_GET['code']);
+  $resultDegree = $d->getDegrees($db,$result);
 ?>
 
 <link href="css/agri-styles.css" rel="stylesheet">
@@ -32,20 +33,29 @@ if(empty($_GET)){
             <!-- Tab panes -->
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane active" id="about">
-                <?=$result[0]['collegeDesc']?><br /><br />
+                <?=$result[0]['collegeAboutInfo']?><br /><br />
               </div>
-
-              <div role="tabpanel" class="tab-pane" id="degrees">
-                <div id="degree-gap" class="container">
-                  <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" data-html="true" title="Careers: Farm appraiser, Agricultural policy analyst, Farm manager, Crop producer<br />Grain and livestock buyer, Market analyst, Financer, Quality controller<br />Marketing head">
-                    Bachelor of Science in Agricultural Business
-                  </button>
-                </div>
-                <div id="degree-gap" class="container">
-                  <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" data-html="true" title="Careers: Horticulturist, Fish farm manager, Irrigation Specialists, Rural practice surveyor<br />Grain and livestock buyer, Market analyst, Financer, Quality controller<br />Marketing head">
-                    Bachelor of Science in Agriculture Major in Agronomy and Animal Science
-                  </button>
-                </div>
+            <div role="tabpanel" class="tab-pane" id="degrees">
+            <div class="panel-group panel-group-joined" id="accordion-test">
+              <?php foreach ($resultDegree as $key) {?>
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordion-test-2" href="#<?=$key['degreeID']?>" aria-expanded="false" class="collapsed">
+                                  <?=$key['degreeDesc']?>
+                              </a>
+                          </h4>
+                      </div>
+                      <div id="<?=$key['degreeID']?>" class="panel-collapse collapse">
+                          <div class="panel-body">
+                              <p>
+                                Jobs: <?=$key['degreeJobs']?>
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+                <?php } ?>
+              </div>
               </div>
               <div role="tabpanel" class="tab-pane" id="messages">
                 <i class="glyphicon glyphicon-user"><?= $result[0]['collegeDean']?></i><br /><br />

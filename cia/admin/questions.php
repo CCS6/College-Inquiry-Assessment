@@ -34,8 +34,6 @@ $result = $user->getQuestions($db);
                     <table class="table table-bordered table-striped" id="datatable-editable">
                         <thead>
                         <tr>
-                            <!--<th>Cnt</th>-->
-                            <th>Question ID</th>
                             <th>Question</th>
                             <th>Action</th>
                         </tr>
@@ -46,8 +44,6 @@ $result = $user->getQuestions($db);
                         foreach($result as $key){
                             ?>
                             <tr class="gradeX">
-                                <!--<td><?=$i++;?></td>-->
-                                <td><?=$key['questionID']?></td>
                                 <td><?=$key['questionText']?></td>
                                 <td class="actions">
                                     <a href="#" data-rel="<?=$key['questionID']?>" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>

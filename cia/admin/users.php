@@ -40,6 +40,7 @@
                                             <th>Last Name</th>
                                             <th>User Name</th>
                                             <th>Password</th>
+                                            <th>Result College</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -55,6 +56,7 @@
                                         <td><?=$key["lastName"]?></td>
                                         <td><?=$key["username"]?></td>
                                         <td><?=$key["password"]?></td>
+                                        <td><?=$key["resultCollege"]?></td>
                                         <td class="actions">
                                                   <a href="#" data-rel="<?=$key['userID']?>" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                                   <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>

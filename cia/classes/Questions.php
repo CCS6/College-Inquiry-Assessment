@@ -8,12 +8,8 @@ class Questions{
         return $db->select()->from('question')->fetch();
     }
 
-    function getQuestionDetail($db,$collegeCode){
-        //return $db->select()->from('college')->where('collegeCode',$collegeCode)->fetch();
-    }
-
-    function getCollegeQuestionAnswerKeys($db){
-        return $db->select('a.anskeyID anskeyID,concat(c.collegeID,"-",c.collegeName) collegeName,q.questionID questionID,concat(q.questionID,"-",q.questionText) questionName,a.answer answer')->from('collegeanskey a')->join('college c','c.collegeID = a.collegeID','left')->join('question q','q.questionID = a.questionID','left')->order_by('anskeyID asc,collegeName asc')->fetch();
+    function getQuestionDetail($db,$id){
+        return $db->select()->from('question')->where('questionID',$id)->fetch();
     }
 
     function getTotalQuestions($db){
@@ -32,10 +28,10 @@ class Questions{
         return $id;
     }
 
-    function editQuestion($db,$id,$tablename){
+    function editQuestion($db,$id,$tablename,$values){
         $t = explode('.',$tablename);//{'questions','php'}
         $tn = substr($t[0],0,strlen($t[0]) - 1);
-        $db->update("$tn")->where('questionID',$id)->execute();
+        $db->where('questionID',$id)->update($tn,$values);
 
         return $id;
     }

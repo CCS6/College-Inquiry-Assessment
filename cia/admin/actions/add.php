@@ -3,6 +3,7 @@ require_once '../../config.php';
 include '../../classes/Users.php';
 include '../../classes/Colleges.php';
 include '../../classes/Questions.php';
+include '../../classes/Degrees.php';
     $data = array(
         'table'=>strip_tags(trim($_POST['page'])),
         'values'=>$_POST['values']
@@ -59,16 +60,33 @@ include '../../classes/Questions.php';
             $data['id'] = $totalQuestions;
 
             $questionData = array(
-                'questionID'=>strip_tags(trim($data['values'][0])),
-                'questionText'=>strip_tags(trim($data['values'][1])),
+                'questionText'=>strip_tags(trim($data['values'][0])),
             );
 
-            $result = $question->addQuestion($db,$questionData,$questionData['questionID']);
-
+            $result = $question->addQuestion($db,$questionData,$data['id']);
             if ($result>0) {
-                $response = array('notice' => 'Success!','msg'=> "Question[".$data['values'][1]."] added.",'lastid'=>$result);
+                $response = array('notice' => 'Success!','msg'=> "Question[".$data['values'][0]."] added.",'lastid'=>$result);
             } else {
-                $response = array('notice'=>'Warning!','msg' => "The question[ ".$data['values'][1]." ] already exists.");
+                $response = array('notice'=>'Warning!','msg' => "The question[ ".$data['values'][0]." ] already exists.");
+            }
+            echo json_encode($response);
+        }
+        else if($data['table'] == 'collegedegrees.php'){
+            $degree = new Degrees();
+            $totalDegrees = $degree->getTotalDegrees($db);
+            $collegeID = explode('-',$data['values'][0]);
+            $degreeData = array(
+                'collegeID' => $collegeID[0],
+                'degreeCode'=>strip_tags(trim($data['values'][2])),
+                'degreeDesc'=>strip_tags(trim($data['values'][3])),
+                'degreeJobs'=>nl2br(strip_tags(trim($data['values'][4]))),
+            );
+
+            $result = $degree->addDegree($db,$degreeData);
+            if ($result>0) {
+                $response = array('notice' => 'Success!','msg'=> "Degree[".$data['values'][2]."] added.",'lastid'=>$result);
+            } else {
+                $response = array('notice'=>'Warning!','msg' => "The degree[ ".$data['values'][2]." ] already exists.");
             }
             echo json_encode($response);
         }

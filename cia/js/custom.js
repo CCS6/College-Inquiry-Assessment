@@ -55,8 +55,8 @@
         if (a==null || a=="",b==null || b=="")
         {
             $('#login-btn').addClass('alert-danger');
-            $('#login-btn').html('Tests').fadeIn(2000);
-            setTimeout(timeout('#login-btn', '<strong>Oops!</strong>Please Fill All Required Fields!'),2000);
+            $('#login-btn').html('Tests').fadeIn(500);
+            setTimeout(timeout('#login-btn', '<strong>Oops!</strong>Please Fill All Required Fields!'),500);
         }
         else{
             var str1 = $('form[name=login-form]').serializeArray();
@@ -90,8 +90,8 @@
         if (a==null || a==""|| b==null || b==""|| c==null || c==""|| d==null || d==""|| e==null||e=="")
         {
             $('#register-btn').addClass('alert-danger');
-            $('#register-btn').html('<strong>Oops!</strong>Please Fill All Required Fields!').fadeIn(2000);
-            setTimeout(timeout('#register-btn', '<strong>Oops!</strong>Please Fill All Required Fields!'),2000);
+            $('#register-btn').html('<strong>Oops!</strong>Please Fill All Required Fields!').fadeIn(500);
+            setTimeout(timeout('#register-btn', '<strong>Oops!</strong>Please Fill All Required Fields!'),500);
         }
         else{
             var str = $('form[name=registration-form]').serializeArray();
@@ -124,8 +124,8 @@
                 $('#register-btn').removeClass('alert-danger');
             }
             $('#register-btn').addClass(className);
-            $('#register-btn').html(htmlText).fadeIn(2000);
-            setTimeout(timeout('#register-btn', htmlText),2000);
+            $('#register-btn').html(htmlText).fadeIn(500);
+            setTimeout(timeout('#register-btn', htmlText),500);
         }
         else{
             htmlText = '<strong>Oops!</strong> '+message;
@@ -133,8 +133,8 @@
                 $('#register-btn').removeClass('alert-success');
             }
             $('#register-btn').addClass(className);
-            $('#register-btn').html(htmlText).fadeIn(2000);
-            setTimeout(timeout('#register-btn', htmlText),2000);
+            $('#register-btn').html(htmlText).fadeIn(500);
+            setTimeout(timeout('#register-btn', htmlText),500);
         }
     }
 
@@ -148,11 +148,11 @@
                 $('#login-btn').removeClass('alert-danger');
             }
             $('#login-btn').addClass(className);
-            $('#login-btn').html(htmlText).fadeIn(2000);
+            $('#login-btn').html(htmlText).fadeIn(500);
             if(type == 'admin')
-                setTimeout(timeoutAdminLogin('#login-btn', htmlText),2000);
+                setTimeout(timeoutAdminLogin('#login-btn', htmlText),500);
             else
-                setTimeout(timeoutUserLogin('#login-btn', htmlText),2000);;
+                setTimeout(timeoutUserLogin('#login-btn', htmlText),500);;
         }
         else{
             htmlText = '<strong>Oops!</strong> '+message;
@@ -160,25 +160,25 @@
                 $('#login-btn').removeClass('alert-success');
             }
             $('#login-btn').addClass(className);
-            $('#login-btn').html(htmlText).fadeIn(2000);
-            setTimeout(timeout('#login-btn', htmlText),2000);
+            $('#login-btn').html(htmlText).fadeIn(500);
+            setTimeout(timeout('#login-btn', htmlText),500);
         }
     }
 
     function timeoutAdminLogin(obj,htmlText){
-        $(obj).html(htmlText).fadeOut(2000,function(){
+        $(obj).html(htmlText).fadeOut(500,function(){
             window.location = 'admin/index.php';
         });
     }
 
     function timeoutUserLogin(obj,htmlText){
-        $(obj).html(htmlText).fadeOut(2000,function(){
+        $(obj).html(htmlText).fadeOut(500,function(){
             window.location = 'index.php';
         });
     }
 
     function timeout(obj,htmlText){
-        $(obj).html(htmlText).fadeOut(2000);
+        $(obj).html(htmlText).fadeOut(500);
     }
 
     function clearRegistrationForm(){

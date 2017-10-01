@@ -1,7 +1,7 @@
 <?php
   include 'header.php';
-  include '../classes/Colleges.php';
-  $cd = new Colleges();
+  include '../classes/Degrees.php';
+  $cd = new Degrees();
   $result = $cd->getCollegeDegrees($db);
 
 /*
@@ -43,7 +43,7 @@ die();*/
                                         <tr>
                                             <th>College Name</th>
                                             <th>College Code</th>
-                                            <th>Degree Name</th>
+                                            <th>Degree Code</th>
                                             <th>Degree Description</th>
                                             <th>Jobs</th>
                                             <th>Action</th>
@@ -57,7 +57,7 @@ die();*/
                                       <tr class="gradeX">
                                         <td><?=$key['collegeName']?></td>
                                         <td><?=$key['collegeCode']?></td>
-                                        <td><?=$key["degreeName"]?></td>
+                                        <td><?=$key["degreeCode"]?></td>
                                         <td><?=$key["degreeDesc"]?></td>
                                         <td><?=$key["degreeJobs"]?></td>
                                         <td class="actions">

@@ -3,6 +3,7 @@ require_once '../../config.php';
 include '../../classes/Users.php';
 include '../../classes/Colleges.php';
 include '../../classes/Questions.php';
+include '../../classes/Degrees.php';
 
 $data = array(
     'id'=>strip_tags(trim($_POST['id'])),
@@ -37,6 +38,17 @@ if(!empty($_POST)){
         $question = new Questions();
 
         $result = $question->deleteQuestion($db,$data['id'],$data['table']);
+
+        if ($result > 0) {
+            $response = array('notice' => 'Success!','msg'=> "Record successfully deleted.",'lastid'=>$result);
+        } else {
+            $response = array('notice'=>'Warning!','msg' => "Record does not exist.");
+        }
+    }
+    else if($data['table'] == 'collegedegrees.php'){
+        $degree = new Degrees();
+
+        $result = $degree->deleteDegree($db,$data['id']);
 
         if ($result > 0) {
             $response = array('notice' => 'Success!','msg'=> "Record successfully deleted.",'lastid'=>$result);

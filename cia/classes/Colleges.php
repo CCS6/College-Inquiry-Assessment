@@ -8,23 +8,6 @@ class Colleges{
         return $db->select()->from('college')->fetch();
     }
 
-    function getCollegeDegrees($db){
-        /*
-        $db->select('*');
-        $db->from('blogs');
-        $db->join('comments', 'comments.id = blogs.id');
-
-        SELECT d.degreeID degreeID,c.collegeName collegeName,concat(c.collegeID,"-",c.collegeCode) collegeCode,
-        concat(d.degreeID,'-',d.degreeName) degreeName,d.degreeDesc,d.degreeJobs
-        FROM college c
-        LEFT JOIN degree d ON d.`collegeID`=c.`collegeID`
-        ORDER BY collegeName,degreeName;
-        */
-
-        return $db->select('d.degreeID degreeID,c.collegeName collegeName,concat(c.collegeID,"-",c.collegeCode) collegeCode,
-        concat(d.degreeID,"-",d.degreeName) degreeName,d.degreeDesc,d.degreeJobs')->from('college c')->join('degree d','d.collegeID=c.collegeID')->order_by('collegeName asc, degreeName asc')->fetch();
-    }
-
     function getCollegeDetail($db,$collegeCode){
         return $db->select()->from('college')->where('collegeCode',$collegeCode)->fetch();
     }
@@ -35,6 +18,7 @@ class Colleges{
     }
 
     function addCollege($db,$data,$collegeCode){
+        $data['collegeAboutInfo'] = nl2br($data['collegeAboutInfo']);
         $db->select()->from("college")->where('collegeCode',$collegeCode)->execute();
         if (($db->affected_rows)<1) {
             $id = $db->insert("college",$data);//returns the last id inserted
@@ -44,10 +28,10 @@ class Colleges{
         return $id;
     }
 
-    function editCollege($db,$id,$tablename){
+    function editCollege($db,$id,$tablename,$values){
         $t = explode('.',$tablename);//{'colleges','php'}
         $tn = substr($t[0],0,strlen($t[0]) - 1);
-        $db->delete("$tn")->where('collegeID',$id)->execute();
+        $db->where('collegeID',$id)->update($tn,$values);
 
         return $id;
     }
@@ -58,5 +42,10 @@ class Colleges{
         $db->delete("$tn")->where('collegeID',$id)->execute();
 
         return $id;
+    }
+
+    function get_words($sentence, $count = 20) {
+      preg_match("/(?:\w+(?:\W+|$)){0,$count}/", $sentence, $matches);
+      return $matches[0];
     }
 }

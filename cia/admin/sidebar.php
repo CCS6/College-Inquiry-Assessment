@@ -6,9 +6,6 @@
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><?php echo $_SESSION['firstname'].' '.$_SESSION['lastname']?><span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile<div class="ripple-wrapper"></div></a></li>
-                        <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
-                        <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
                         <?php if($s->isLoggedIn() == 1 && $s->logOut() == 1){
                           echo '<li><a href="../index.php?page=logout" title="Log-Out"><i class="md md-settings-power"></i>Logout</a></li>';
                         }?>

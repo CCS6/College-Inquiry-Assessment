@@ -23,5 +23,6 @@
     <script src="js/custom.js"></script>
     <script src="js/index.js"></script>
     <script src="js/tooltips.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
 </body>
 </html>

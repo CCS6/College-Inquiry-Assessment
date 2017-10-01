@@ -1,7 +1,7 @@
 <?php
 include 'header.php';
-include '../classes/Questions.php';
-$qa = new Questions();
+include '../classes/AnswerKeys.php';
+$qa = new AnswerKeys();
 $result = $qa->getCollegeQuestionAnswerKeys($db);
 ?>
 
