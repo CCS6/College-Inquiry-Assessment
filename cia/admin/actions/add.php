@@ -4,6 +4,7 @@ include '../../classes/Users.php';
 include '../../classes/Colleges.php';
 include '../../classes/Questions.php';
 include '../../classes/Degrees.php';
+include '../../classes/AnswerKeys.php';
     $data = array(
         'table'=>strip_tags(trim($_POST['page'])),
         'values'=>$_POST['values']
@@ -73,7 +74,6 @@ include '../../classes/Degrees.php';
         }
         else if($data['table'] == 'collegedegrees.php'){
             $degree = new Degrees();
-            $totalDegrees = $degree->getTotalDegrees($db);
             $collegeID = explode('-',$data['values'][0]);
             $degreeData = array(
                 'collegeID' => $collegeID[0],
@@ -83,6 +83,26 @@ include '../../classes/Degrees.php';
             );
 
             $result = $degree->addDegree($db,$degreeData);
+            if ($result>0) {
+                $response = array('notice' => 'Success!','msg'=> "Degree[".$data['values'][2]."] added.",'lastid'=>$result);
+            } else {
+                $response = array('notice'=>'Warning!','msg' => "The degree[ ".$data['values'][2]." ] already exists.");
+            }
+            echo json_encode($response);
+        }
+        else if($data['table'] == 'answerkeys.php'){
+            $answerkey = new AnswerKeys();
+            $collegeID = explode('-',$data['values'][0]);
+            $questionID = explode('-',$data['values'][1]);
+             print_r($data);
+
+            $degreeData = array(
+                'collegeID' => $collegeID[0],
+                'questionID'=> $questionID[0],
+                'answer'=>strip_tags(trim($data['values'][2]))
+            );
+
+            $result = $answerkey->addAnswerKey($db,$degreeData);
             if ($result>0) {
                 $response = array('notice' => 'Success!','msg'=> "Degree[".$data['values'][2]."] added.",'lastid'=>$result);
             } else {

@@ -80,7 +80,7 @@ if(!empty($_POST)){
         $o = new Colleges();
         $columns = ['collegeCode', 'collegeName', 'collegeAboutInfo', 'collegeDean', 'collegeEmail', 'collegePhoneNumber'];
 
-        $result = $o->getCollegeDetail($db,$data['values'][0]);
+        //$result = $o->getCollegeDetail($db,$data['values'][0]);
 
         $newData = array();
 
@@ -100,7 +100,7 @@ if(!empty($_POST)){
         $o = new Questions();
         $columns = ['questionText'];
 
-        $result = $o->getQuestionDetail($db,$data['id']);
+        //$result = $o->getQuestionDetail($db,$data['id']);
         $newData = array();
 
         for ($i = 0; $i < count($data['values']) - 1; $i++) {
@@ -113,9 +113,8 @@ if(!empty($_POST)){
     }else if($data['table'] == 'collegedegrees.php'){
         $o = new Degrees();
         $columns = ['degreeCode','degreeDesc','degreeJobs'];
-        print_r($data);
 
-        $result = $o->getDegreeDetail($db,$data['id']);
+        //$result = $o->getDegreeDetail($db,$data['id']);
         $newData = array();
         for ($i = 0; $i < count($data['values']) - 1; $i++) {
             if($i < 2)
@@ -129,18 +128,14 @@ if(!empty($_POST)){
     }else if($data['table'] == 'answerkeys.php'){
         $o = new AnswerKeys();
         $columns = ['collegeID','questionID','answer'];
-        print_r($data);
 
-        $result = $o->getDegreeDetail($db,$data['id']);
+        //$result = $o->getAnswerKey($db,$data['id']);
         $newData = array();
-        // for ($i = 0; $i < count($data['values']) - 1; $i++) {
-        //     if($i < 2)
-        //         continue;
-        //     else
-        //         $newData[$columns[$i-2]] = $data['values'][$i];
-        // }
+        for ($i = 0; $i < count($data['values']) - 1; $i++) {
+            $newData[$columns[$i]] = $data['values'][$i];
+        }
 
-        $result = $o->editDegree($db, $data['id'], $newData);
+        $result = $o->editAnswerKey($db, $data['id'], $newData);
 
         $response = array('notice' => 'Success!','msg' => 'Record successfully updated.','lastid'=>$result);
     }

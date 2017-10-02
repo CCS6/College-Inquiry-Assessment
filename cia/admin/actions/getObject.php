@@ -14,15 +14,12 @@
             $resultData[$i]['collegeName'] = $result[$i]['collegeName'];
             $resultData[$i]['collegeCode'] = $result[$i]['collegeCode'];
         }
+        echo json_encode($resultData);
     }else if($data['table']=='answerkeys.php'){
         $c = new Colleges();
         $q = new Questions();
         $resultCollege = $c->getColleges($db);
         $resultQuestion = $q->getQuestions($db);
-        // $resultData = array(
-        //     'college' => $resultCollege,
-        //     'question' => $resultQuestion
-        // );
         $resultColleges = array();
         $resultQuestions = array();
 
@@ -39,5 +36,5 @@
             $resultColleges,
             $resultQuestion
         );
+        echo json_encode($finalResult);
     }
-    echo json_encode($finalResult);

@@ -285,6 +285,8 @@
 						else if(i==2){
 							if(page=='answerkeys.php')
 								$this.html('<select name="questionname" class="form-control input-block"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>');
+							else
+								$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '"/>' );
 						}
 
 						else if(i==4)
@@ -390,8 +392,6 @@
 						return $.trim( $this.find('.input-block').val() );
 					}
 				});
-
-
 				var invalid = false;
 				var alertmsg = '';
 				$.ajax({
