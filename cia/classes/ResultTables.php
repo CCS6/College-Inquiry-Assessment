@@ -13,4 +13,9 @@ class ResultTables{
         ->fetch();
     }
 
+    function getTotalResultTables($db){
+        $db->select()->from('resulttable')->execute();
+        return $db->affected_rows;
+    }
+
 }

@@ -81,16 +81,14 @@ if(!empty($_POST)){
         $columns = ['collegeCode', 'collegeName', 'collegeAboutInfo', 'collegeDean', 'collegeEmail', 'collegePhoneNumber'];
 
         //$result = $o->getCollegeDetail($db,$data['values'][0]);
-
         $newData = array();
-
         for ($i = 0; $i < count($data['values']) - 1; $i++) {
-            if($i == 2)
+            if($i == 2){
                 $newdata[$columns[$i]] = nl2br($data['values'][$i]);
+            }
             else
                 $newdata[$columns[$i]] = $data['values'][$i];
         }
-
 
         $result = $o->editCollege($db, $data['id'], $data['table'], $newdata);
 
@@ -119,6 +117,8 @@ if(!empty($_POST)){
         for ($i = 0; $i < count($data['values']) - 1; $i++) {
             if($i < 2)
                 continue;
+            else if($i == 4)
+                $newData[$columns[2]] = nl2br($data['values'][4]);
             else
                 $newData[$columns[$i-2]] = $data['values'][$i];
         }

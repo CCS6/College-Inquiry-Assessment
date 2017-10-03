@@ -74,7 +74,7 @@
                             clearLoginForm();
                             confirmMessageLogin('alert-success','Login success!',data['type']);
                     }
-                    }
+                }
             });
         }
     });

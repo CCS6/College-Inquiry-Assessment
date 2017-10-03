@@ -243,10 +243,16 @@
 						}
 					}
 					else if(page=='colleges.php'){
-							$this.html( '<textarea class="form-control input-block value="'+ data[i] +'">'+ data[i] +'</textarea>' );
+						if(i==2){
+							var text = data[2].replace(/(<([^>]+)>)/ig,"");
+							$this.html( '<textarea class="form-control input-block value="'+text+'">'+text+'</textarea>' );
+						}
+						else
+							$this.html( '<textarea class="form-control input-block value="'+data[i]+'">'+data[i]+'</textarea>' );
 					}
 					else if(page=='questions.php'){
-							$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '"/>' );
+						var text = data[i].replace(/[^a-zA-Z ]/g, "")
+							$this.html( '<input type="text" class="form-control input-block" value="' + text + '"/>' );
 					}
 					else if(page=='collegedegrees.php' || page=='answerkeys.php'){
 						if(i==0){
@@ -400,7 +406,7 @@
 					type:'post',
 					data:{'ID':objID,'page':page,'values':values.toArray()},
 					success:function(data){
-
+						console.log(data);
 						var j = $.parseJSON(data);
 
 						if(j.notice == "Success!"){

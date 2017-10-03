@@ -32,7 +32,6 @@ $result = $r->getResultsTable($db);
                     <table class="table table-bordered table-striped" id="datatable-editable">
                         <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Name</th>
                             <th>User Name</th>
                             <th>Question</th>
@@ -45,7 +44,6 @@ $result = $r->getResultsTable($db);
                         foreach($result as $key){
                             ?>
                             <tr class="gradeX">
-                                <td><?=$key['id']?></td>
                                 <td><?=$key['uName']?></td>
                                 <td><?=$key['userName']?></td>
                                 <td><?=$key['question']?></td>

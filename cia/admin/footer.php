@@ -40,6 +40,10 @@
         var resizefunc = [];
     </script>
 
+    <script>
+        var resizefunc = [];
+    </script>
+
     <!-- jQuery  -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -62,7 +66,10 @@
     <script src="assets/datatables/dataTables.bootstrap.js"></script>
     <script src="assets/jquery-datatables-editable/datatables.editable.init.js"></script>
 
-    <!--<script src="js/customapp.js"></script>-->
+
+    <!-- Chart JS -->
+    <script src="assets/chartjs/chart.min.js"></script>
+    <script src="assets/chartjs/chartjs.init.js"></script>
 
 </body>
 </html>

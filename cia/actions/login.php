@@ -8,15 +8,20 @@ $data = array(
 
 $db->select()->from('user')->where('username',$data['username'])->execute();
 
-if (($db->affected_rows) > 0) {
+if (($db->affected_rows) > 0){
     session_start();
     $result = $db->select()->from('user')->where('username', $data['username'])->fetch();
-    $_SESSION['username'] = $result[0]['username'];
-    $_SESSION['type'] = $result[0]['userType'];
-    $_SESSION['firstname'] = $result[0]['firstName'];
-    $_SESSION['lastname'] = $result[0]['lastName'];
+    if($data['username']==$result[0]['username'] && $data['password'] == $result[0]['password']){
+        $_SESSION['username'] = $result[0]['username'];
+        $_SESSION['type'] = $result[0]['userType'];
+        $_SESSION['firstname'] = $result[0]['firstName'];
+        $_SESSION['lastname'] = $result[0]['lastName'];
 
-    $response = array('notice'=>'Success!','type'=>$_SESSION['type']);
+        $response = array('notice'=>'Success!','type'=>$_SESSION['type']);
+    }
+    else {
+        $response = array('notice'=>'Error!');
+    }
 }
 else {
     $response = array('notice'=>'Error!');
