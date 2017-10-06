@@ -30,50 +30,32 @@ $tempResultTable = array();
                 ?>
                   <li class="question">
                       <div class="question-wrap">
-
-                              <p><?= $key['questionText'] ?></p>
-
+                              <h2><?= $key['questionText'] ?></h2>
                       </div>
                   </li>
-                    <li class="quiz-answer low-value" data-quizIndex="2" ID='0'>
+                    <li class="quiz-answer low-value" data-quizIndex="0">
                         <div class="answer-wrap">
                             <p class="answer-text">0</p>
-                            <?php
-                              $answer = 0;
-                            ?>
-
                         </div>
                     </li>
-                    <li class="quiz-answer high-value" data-quizIndex="4" ID='1'>
+                    <li class="quiz-answer low-value" data-quizIndex="1">
                         <div class="answer-wrap">
                             <p class="answer-text">1</p>
-                            <?php
-                              $answer = 1;
-                            ?>
                         </div>
                     </li>
-                    <li class="quiz-answer 2-value" data-quizIndex="6" ID='2'>
+                    <li class="quiz-answer high-value" data-quizIndex="2">
                         <div class="answer-wrap">
                             <p class="answer-text">2</p>
-                            <?php
-                              $answer = 2;
-                            ?>
                         </div>
                     </li>
-                    <li class="quiz-answer 3-value" data-quizIndex="8" ID='3'>
+                    <li class="quiz-answer high-value" data-quizIndex="3">
                         <div class="answer-wrap">
                             <p class="answer-text">3</p>
-                            <?php
-                              $answer = 3;
-                            ?>
                         </div>
                     </li>
-                    <li class="quiz-answer 4-value" data-quizIndex="10" ID='4'>
+                    <li class="quiz-answer high-value" data-quizIndex="4">
                         <div class="answer-wrap">
                             <p class="answer-text">4</p>
-                            <?php
-                              $answer = 4;
-                            ?>
                         </div>
                     </li>
               </ul>

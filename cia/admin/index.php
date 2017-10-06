@@ -74,7 +74,7 @@
                                     <span class="mini-stat-icon bg-primary"><i class="md md-vpn-key"></i></span>
                                     <div class="mini-stat-info text-right text-muted">
                                         <?php echo '<span class="counter">'.$answerKeyCount.'</span>';?>
-                                        User Count
+                                        Answer Key Count
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                                     <span class="mini-stat-icon bg-warning"><i class="md md-view-list"></i></span>
                                     <div class="mini-stat-info text-right text-muted">
                                         <?php echo '<span class="counter">'.$resultTableCount.'</span>';?>
-                                        College Count
+                                        Results Count
                                     </div>
                                 </div>
                             </div>

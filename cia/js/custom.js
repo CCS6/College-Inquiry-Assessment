@@ -93,6 +93,11 @@
             $('#register-btn').html('<strong>Oops!</strong>Please Fill All Required Fields!').fadeIn(500);
             setTimeout(timeout('#register-btn', '<strong>Oops!</strong>Please Fill All Required Fields!'),500);
         }
+        else if(d!=e){
+            $('#register-btn').addClass('alert-danger');
+            $('#register-btn').html('<strong>Oops!</strong>Password does not match.').fadeIn(500);
+            setTimeout(timeout('#register-btn', '<strong>Oops!</strong>Password does not match.'),500);
+        }
         else{
             var str = $('form[name=registration-form]').serializeArray();
             $.ajax({

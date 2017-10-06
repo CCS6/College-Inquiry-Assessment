@@ -32,12 +32,6 @@
                                     <span class="hidden-xs">About Me</span>
                                 </a>
                             </li>
-                            <li class="tab" >
-                                <a href="#settings-2" data-toggle="tab" aria-expanded="false">
-                                    <span class="visible-xs"><i class="fa fa-cog"></i></span>
-                                    <span class="hidden-xs">Settings</span>
-                                </a>
-                            </li>
                         <div class="indicator"></div></ul>
                         </div>
                     </div>
@@ -78,8 +72,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <div class="col-md-8">
                                         <!-- Personal-Information -->
                                         <div class="panel panel-default panel-fill">
@@ -97,41 +89,7 @@
 
                                 </div>
                             </div>
-                            <div class="tab-pane" id="settings-2">
-                                <!-- Personal-Information -->
-                                <!--TO BE DISCUSSED W/ THE TEAM-->
-                                <!--<div class="panel panel-default panel-fill">-->
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">Edit Profile</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="panel panel-default panel-fill" id='userSettings'>
-                                            <form role="form" class="user-settings">
-                                                <div class="form-group">
-                                                    <label for="FullName">First Name</label>
-                                                    <input type="text" placeholder="John" id="firstName" class="form-control">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="Email">Last Name</label>
-                                                    <input type="email" placeholder="Doe" id="lastName" class="form-control">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="Username">Username</label>
-                                                    <input type="text" placeholder="john" id="username" class="form-control">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="Password">Password</label>
-                                                    <input type="password" placeholder="6 - 15 Characters" id="password" class="form-control">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="RePassword">Re-Password</label>
-                                                    <input type="password" placeholder="6 - 15 Characters" id="RePassword" class="form-control">
-                                                </div>
-                                                <button class="btn btn-primary waves-effect waves-light w-md" type="submit">Save</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <!-- Personal-Information -->
                             </div>
                         </div>

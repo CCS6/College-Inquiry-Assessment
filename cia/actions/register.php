@@ -4,7 +4,7 @@ require_once '../config.php';
 include '../classes/Users.php';
 
     $data = array(
-        'acctType'=>'user',
+        'userType'=>'user',
         'firstName'=>strip_tags(trim($_POST['firstname'])),
         'lastName'=>strip_tags(trim($_POST['lastname'])),
         'username'=>strip_tags(trim($_POST['username'])),
