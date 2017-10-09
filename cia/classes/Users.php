@@ -38,19 +38,23 @@ class Users{
 
         return $db->select()->from('user')->fetch();
     }
-  
+
     function getUserbyUsername($db,$username){
         $where = array(
-            //'userID'=>$id
             'username'=>$username
         );//'username'=>$username
-
-        //echo $db->select()->from('user')->where($where)->last_query();
         return $db->select()->from('user')->where($where)->fetch();
     }
 
     function getTotalUsers($db){
         $db->select()->from('user')->execute();
         return $db->affected_rows;
+    }
+
+    function UpdateResults($db,$id,$str){
+        $value = array(
+            'resultCollege' => $str
+        );
+        $db->where('userID',$id)->update('user',$value);
     }
 }

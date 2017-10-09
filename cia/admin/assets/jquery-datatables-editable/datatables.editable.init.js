@@ -12,15 +12,13 @@
 	var arr = pageURL.split('/');
 	//console.log(arr[arr.length-1]);
 	var page = arr[arr.length-1];
+	var urlString = window.location;
 
+	// if(page == 'index.php'){
+		$('a[href="' + page + '"]').addClass("active");
+	// }
 
 	'use strict';
-	//
-	// if(arr[arr.length-1]=='users.php'){
-	// 	var tablecol = [null, null, null, null, null,null, { "bSortable": false }]; //6
-	// }else if(arr[arr.length-1]=='colleges.php'){
-	// 	var tablecol = [null, null, null, null, { "bSortable": false }]; //5
-	// }
 
 	var EditableTable = {
 

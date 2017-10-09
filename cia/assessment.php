@@ -65,7 +65,6 @@ $tempResultTable = array();
             ?>
             <ul id="results">
                       <li class="results-inner">
-                          <p>Your result is:</p>
                           <h1></h1>
                           <p class="desc"></p>
                       </li>

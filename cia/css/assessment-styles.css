@@ -99,10 +99,10 @@ h1, h2, p {
 #quizzie .question-wrap, #quizzie .answer-wrap {
   display: block;
   padding: 1%;
-  margin: 1em 10%;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
+  margin: 1em 15%;
+  -moz-border-radius: 35px;
+  -webkit-border-radius: 35px;
+  border-radius: 35px;
 }
 #quizzie .answer-wrap {
   background: Turquoise;
@@ -117,4 +117,9 @@ h1, h2, p {
 
 .question-div{
   margin:0 23% 0;
+}
+
+p.answer-text{
+  margin: 20px;
+  font-weight: bold;
 }

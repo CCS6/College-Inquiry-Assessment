@@ -1,4 +1,9 @@
 <!-- ========== Left Sidebar Start ========== -->
+<?php
+    $urls = ["index.php","users.php","colleges.php","collegedegrees.php","questions.php","answerkeys.php","assessments.php"];
+    $classes = ["md md-home","md ion-android-social","md md-school","md md-book","md md-question-answer","md md-vpn-key","md md-view-list"];
+    $desc = ["Dashboard","Users","Colleges","College Degrees","Questions","Answer Keys","Assesment Records"];
+?>
 <div class="left side-menu">
     <div class="sidebar-inner slimscrollleft">
         <div class="user-details">
@@ -11,23 +16,15 @@
                         }?>
                     </ul>
                 </div>
-
                 <p class="text-muted m-0"><?=$_SESSION['type'];?></p>
             </div>
         </div>
         <!--- Divider -->
         <div id="sidebar-menu">
             <ul>
-                <li>
-                    <a href="index.php" class="waves-effect active"><i class="md md-home"></i><span> Dashboard </span></a>
-                </li>
-                <li><a href="users.php" class="waves-effect"><i class="md ion-android-social"></i>Users</a></li>
-                <li><a href="colleges.php" class="waves-effect"><i class="md md-school"></i>Colleges</a></li>
-                <li><a href="collegedegrees.php" class="waves-effect"><i class="md md-book"></i>College Degrees</a></li>
-                <li><a href="questions.php" class="waves-effect"><i class="md md-question-answer"></i>Questions</a></li>
-                <li><a href="answerkeys.php" class="waves-effect"><i class="md md-vpn-key"></i>Answer Keys</a></li>
-                <li><a href="assesments.php" class="waves-effect"><i class="md md-view-list"></i>Assesment Records</a></li>
-
+                <?php $i; for($i = 0;$i < 7;$i++){ ?>
+                <li><a href="<?=$urls[$i];?>" class="waves-effect"><i class="<?=$classes[$i];?>"></i><span> <?=$desc[$i];?> </span></a></li>
+                <?php }?>
             </ul>
             <div class="clearfix"></div>
         </div>

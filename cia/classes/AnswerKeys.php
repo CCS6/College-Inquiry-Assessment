@@ -46,6 +46,6 @@ class AnswerKeys{
     }
 
     function getCollegeAnsKey($db,$id){
-        return $db->select()->from('collegeanskey')->where('collegeID',$id)->order_by('questionID asc,collegeID asc')->fetch();
+        return $db->select('answer')->from('collegeanskey')->where('collegeID',$id)->order_by('questionID asc,collegeID asc')->fetch();
     }
 }

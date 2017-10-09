@@ -40,9 +40,9 @@
         var resizefunc = [];
     </script>
 
-    <script>
+    <!--<script>
         var resizefunc = [];
-    </script>
+    </script>-->
 
     <!-- jQuery  -->
     <script src="js/jquery.min.js"></script>

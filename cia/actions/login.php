@@ -12,6 +12,7 @@ if (($db->affected_rows) > 0){
     session_start();
     $result = $db->select()->from('user')->where('username', $data['username'])->fetch();
     if($data['username']==$result[0]['username'] && $data['password'] == $result[0]['password']){
+        $_SESSION['userID'] = $result[0]['userID'];
         $_SESSION['username'] = $result[0]['username'];
         $_SESSION['type'] = $result[0]['userType'];
         $_SESSION['firstname'] = $result[0]['firstName'];

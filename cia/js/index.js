@@ -23,6 +23,7 @@ var resultOptions = [
 var quizSteps = $('#quizzie .quiz-step'), totalScore = 0;
 var tempResultTable = [];
 var i = 0;
+var highArray = [],maxArray = [], finalMax = [];
 quizSteps.each(function () {
     var currentStep = $(this), ansOpts = currentStep.children('.quiz-answer');
     ansOpts.each(function () {
@@ -30,36 +31,18 @@ quizSteps.each(function () {
         eachOpt[0].addEventListener('click', check, false);
         function check() {
             var $this = $(this), value = $this.attr('data-quizIndex'), answerScore = parseInt(value);
-            //for(i = 0;i < 10;i++){
                 tempResultTable[i] = value[0];
-                // console.log(tempResultTable[i]);
                 i+=1;
-                 //console.log(tempResultTable);
-            //}
-            // .done(function() {
-            //     console.log("success");
-            // })
-            // .fail(function() {
-            //     console.log("error");
-            // })
-            // .always(function() {
-            //     console.log("complete");
-            // });
-            //console.log(currentStep.children('.active').length);
             if (currentStep.children('.active').length > 0) {
                 var wasActive = currentStep.children('.active'), oldScoreValue = wasActive.attr('data-quizIndex'), oldScore = parseInt(oldScoreValue);
                 currentStep.children('.active').removeClass('active');
                 $this.addClass('active');
                 totalScore -= oldScoreValue;
                 totalScore += answerScore;
-                console.log(answerScore);
-                console.log(totalScore);
                 calcResults(totalScore);
             } else {
                 $this.addClass('active');
                 totalScore += answerScore;
-                console.log(answerScore);
-                console.log(totalScore);
                 calcResults(totalScore);
                 updateStep(currentStep);
             }
@@ -73,10 +56,7 @@ function updateStep(currentStep) {
     }
 }
 function calcResults(totalScore) {
-    // console.log(quizSteps.find('.active').length);
-    // console.log(quizSteps.length);
     if (quizSteps.find('.active').length == quizSteps.length) {
-        // console.log('Went In');
         var resultsTitle = $('#results h1'), resultsDesc = $('#results .desc');
         var lowestScoreArray = $('#quizzie .low-value').map(function () {
             return $(this).attr('data-quizIndex');
@@ -102,13 +82,57 @@ function calcResults(totalScore) {
         while (n < numResults) {
             increment = minScore + interval * n;
             if (totalScore <= increment) {
-                resultsTitle.replaceWith('<h1>' + resultOptions[n].title + '</h1>');
-                resultsDesc.replaceWith('<p class=\'desc\'>' + resultOptions[n].desc + '</p>');
-                    console.log(increment);
-                    console.log(totalScore);
-                    console.log(lowestScoreArray);
-                    console.log(highestScoreArray);
-                    console.log(tempResultTable);
+                $.ajax({
+                    url: 'actions/fetchAnswerKey.php',
+                    postType: 'json',
+                    type: 'post',
+                    data: {'temp':tempResultTable},
+                    success:function(data){
+                        var k = 0;
+                        var result = $.parseJSON(data);
+                        for(i = 0; i < result.length;i++){                //comparing user-input answer with the given answer key
+                            var l = 0
+                            for(var j = 0;j < result[i].length;j++){
+                                if(tempResultTable[j] == result[i][j]['answer'])
+                                    l+=1;
+
+                            }
+                            highArray[i] = l;
+                        }
+                        var j = 0
+                        for(var i = 0;i < result.length;i++){             //pointing j to the highest value and save it to array
+                            if(highArray[j] <= highArray[i]){
+                                j = i;
+                                maxArray[j] = highArray[i];
+                            }
+                            else
+                                maxArray[i] = 0;
+                        }
+                        var m = 0;
+                        for(k;k <= j;k++){                               //placing the index with the highest marks to the final array
+                            if (maxArray[k] == maxArray[j]){
+                                finalMax[m] = k+1;
+                                m++;
+                            }
+
+                        }
+                        // console.log(JSONstr);
+                        // console.log(maxArray);
+                        // console.log(finalMax);
+                        console.log(tempResultTable);
+                        var JSONstr = JSON.stringify(finalMax);
+                        $.ajax({
+                            url: 'actions/addingRecords.php',
+                            type: 'post',
+                            dataType: 'json',
+                            data: {'recCollege': JSONstr,'tempResultTable':JSON.stringify(tempResultTable)},
+                            success:function(data){
+                                resultsDesc.replaceWith('<h1>' + data[0]['recCollege'] + '</h1>');
+                                //  resultsDesc.replaceWith('<p class=\'desc\'>' + resultOptions[n].desc + '</p>');
+                            }
+                        });
+                    }
+                });
                 return;
             } else {
                 n++;
