@@ -94,7 +94,7 @@
                             <div class="col-lg-12">
                                 <div class="panel panel-border panel-primary">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">Recommended Users per College</h3>
+                                        <h3 class="panel-title">Respondents recommended per College</h3>
                                     </div>
                                     <div class="panel-body">
                                         <canvas id="bar" data-type="Bar"></canvas>

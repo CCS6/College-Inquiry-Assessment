@@ -293,14 +293,16 @@
 								$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '"/>' );
 						}
 
-						else if(i==4)
-							$this.html( '<textarea class="form-control input-block value="'+ data[i] +'">'+ data[i] +'</textarea>' );
+						else if(i==4){
+							var text = data[4].replace(/(<([^>]+)>)/ig,"");
+							$this.html( '<textarea class="form-control input-block value="'+ text +'">'+ text +'</textarea>' );
+						}
 						else
 							$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '"/>' );
 					}
-					else if(page=='answerkeys.php'){
+					// else if(page=='answerkeys.php'){
 
-					}
+					// }
 				}
 			});
 		},

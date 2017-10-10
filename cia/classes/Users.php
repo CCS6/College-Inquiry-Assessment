@@ -57,4 +57,8 @@ class Users{
         );
         $db->where('userID',$id)->update('user',$value);
     }
+
+    function getUserbyId($db,$id){
+        return $db->select()->from('user')->where('userID',$id)->fetch();
+    }
 }

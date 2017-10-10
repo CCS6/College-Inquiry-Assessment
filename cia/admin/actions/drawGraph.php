@@ -26,7 +26,4 @@ foreach($result as $values){
 $newarr = array_count_values( $data['colleges']);
 
 echo json_encode($newarr,JSON_FORCE_OBJECT);
-
-
-
 ?>

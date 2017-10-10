@@ -1,5 +1,23 @@
-<?php include "header.php"; /*require 'classes/Session.php';
-    $f = new Session();*/
+<?php
+    include "header.php";
+    require_once 'config.php';
+    include 'classes/Colleges.php';
+    include 'classes/Users.php';
+    include 'classes/Degrees.php';
+
+
+    $u=new Users();
+    $c=new Colleges();
+    $d=new Degrees();
+    $result = $u->getUserbyId($db,$_SESSION['userID']);
+    $arr = explode(',',$result[0]['resultCollege']);
+    // foreach($arr as $value){
+    //     $resultCollege = $c->getCollegeDetail($db,$value);
+    //     $resultDegree = $d->getDegrees($db,$result);
+    //
+    //     foreach($resultDegree as $key){
+    //     }
+    // }
 ?>
 <section id="feature" class="section-padding wow fadeInUp delay-05s">
     <div class="container-fluid cards-row">
@@ -79,9 +97,48 @@
                                                 <h3 class="panel-title">Assessment Results</h3>
                                             </div>
                                             <div class="panel-body">
-                                                <p>
-                                                    Answers from a user's most recent assesment shall be shown here.(CollegeName,Degree,Jobs).
-                                                </p>
+                                                <div class="panel-group panel-group-joined" id="accordion-test">
+                                                  <?php
+                                                  foreach($arr as $value){
+                                                      $resultCollege = $c->getCollegeDetail($db,$value);
+                                                      $resultDegree = $d->getDegrees($db,$resultCollege);
+                                                   ?>
+                                                      <div class="panel-group panel-group-joined" id="accordion-test">
+                                                        <?php foreach ($resultCollege as $colleges) {?>
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-heading">
+                                                                    <h4 class="panel-title">
+                                                                        <a data-toggle="collapse" data-parent="#accordion-test-2" href="#<?=$colleges['collegeID']?>" aria-expanded="false" class="collapsed">
+                                                                            <?=$colleges['collegeName']?>
+                                                                        </a>
+                                                                    </h4>
+                                                                </div>
+                                                                <div id="<?=$colleges['collegeID']?>" class="panel-collapse collapse">
+                                                                    <div class="panel-body">
+                                                                    <?php foreach ($resultDegree as $key) {?>
+                                                                        <div class="panel panel-default">
+                                                                            <div class="panel-heading">
+                                                                                <h4 class="panel-title">
+                                                                                    <a data-toggle="collapse" data-parent="#accordion-test-2" href="#<?=$key['degreeID']?>" aria-expanded="false" class="collapsed">
+                                                                                        <?=$key['degreeDesc']?>
+                                                                                    </a>
+                                                                                </h4>
+                                                                            </div>
+                                                                            <div id="<?=$key['degreeID']?>" class="panel-collapse collapse">
+                                                                                <div class="panel-body">
+                                                                                    <p>
+                                                                                      Jobs: <?=$key['degreeJobs']?>
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                      <?php }?>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                          <?php }?>
+                                                <?php }?>
+                                                  </div>
                                             </div>
                                         </div>
                                         <!-- Personal-Information -->

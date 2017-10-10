@@ -11,6 +11,9 @@ if(empty($_GET)){
 }else{
   $result = $c->getCollegedetail($db,$_GET['code']);
   $resultDegree = $d->getDegrees($db,$result);
+  // echo '<pre>';
+  // print_r($resultDegree);
+  // echo '</pre>';
 ?>
 
 <link href="css/agri-styles.css" rel="stylesheet">
