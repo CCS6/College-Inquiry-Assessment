@@ -66,10 +66,19 @@
     <script src="assets/datatables/dataTables.bootstrap.js"></script>
     <script src="assets/jquery-datatables-editable/datatables.editable.init.js"></script>
 
+<?php
 
+    $url = $_SERVER['REQUEST_URI'];
+    $arr = explode("/",$url);
+    $page = $arr[count($arr)-1];
+
+    if($page == 'index.php'){
+?>
     <!-- Chart JS -->
     <script src="assets/chartjs/chart.min.js"></script>
     <script src="assets/chartjs/chartjs.init.js"></script>
-
+<?php
+    }
+?>
 </body>
 </html>

@@ -38,7 +38,7 @@
                                     <span class="mini-stat-icon bg-primary"><i class="ion-android-contacts"></i></span>
                                     <div class="mini-stat-info text-right text-muted">
                                         <?php echo '<span class="counter">'.$userCount.'</span>';?>
-                                        Users
+                                        <a href="users.php">Users</a>
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                                     <span class="mini-stat-icon bg-warning"><i class="md md-school"></i></span>
                                     <div class="mini-stat-info text-right text-muted">
                                         <?php echo '<span class="counter">'.$collegeCount.'</span>';?>
-                                        Colleges
+                                        <a href="colleges.php">Colleges</a>
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                                     <span class="mini-stat-icon bg-pink"><i class="md md-book"></i></span>
                                     <div class="mini-stat-info text-right text-muted">
                                         <?php echo '<span class="counter">'.$degreeCount.'</span>';?>
-                                        Degrees
+                                        <a href="collegedegrees.php">Degrees</a>
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                                     <span class="mini-stat-icon bg-success"><i class="md md-question-answer"></i></span>
                                     <div class="mini-stat-info text-right text-muted">
                                         <?php echo '<span class="counter">'.$questionCount.'</span>';?>
-                                        Questions
+                                        <a href="questions.php">Questions</a>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
                                     <span class="mini-stat-icon bg-primary"><i class="md md-vpn-key"></i></span>
                                     <div class="mini-stat-info text-right text-muted">
                                         <?php echo '<span class="counter">'.$answerKeyCount.'</span>';?>
-                                        Answer Keys
+                                        <a href="answerkeys.php">Ans Keys</a>
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                                     <span class="mini-stat-icon bg-warning"><i class="md md-view-list"></i></span>
                                     <div class="mini-stat-info text-right text-muted">
                                         <?php echo '<span class="counter">'.$resultTableCount.'</span>';?>
-                                        Results
+                                        <a href="assessments.php">Results</a>
                                     </div>
                                 </div>
                             </div>

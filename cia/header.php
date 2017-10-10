@@ -50,8 +50,13 @@ $s = new Session();
                 <li class=""><a href="about.php">About</a></li>
                 <?php
                   if($s->isLoggedIn() == 1 && $s->logOut() == 1){
-                    echo '<li class=""><a href="index.php?page=logout" title="Log-Out">Logout</a></li>';
-                    echo '<li class=""><a href="userProfile.php" title="View Profile">['.$_SESSION['username'].']</a></li>';
+                      if($_SESSION['type'] == 'admin'){
+                          echo '<li class=""><a href="index.php?page=logout" title="Log-Out">Logout</a></li>';
+                          echo '<li class=""><a href="admin/index.php" title="View Profile">['.$_SESSION['username'].']</a></li>';
+                      }else{
+                        echo '<li class=""><a href="index.php?page=logout" title="Log-Out">Logout</a></li>';
+                        echo '<li class=""><a href="userProfile.php" title="View Profile">['.$_SESSION['username'].']</a></li>';
+                      }
                   }
                   else {
                     echo '<li class=""><a href="login.php">Login</a></li>';

@@ -37,27 +37,33 @@
     //init
     ChartJs.prototype.init = function() {
 
-        //barchart
-        var colleges;
+        var colleges=[];
+        var recommendedpercollege=[];
         $.ajax({
             type: "POST",
             url: 'actions/drawGraph.php',
             dataType: 'json',
             success: function(data){
-                // console.log(data.colleges);
-                colleges = data.colleges;
+                //console.log(data);
+                var i = 0;
+                $.each(data, function(key, value) {
+                    colleges[i]=key;
+                    recommendedpercollege[i]=value;
+                    i++;
+                });
+
             },
             async:false
         });
 
-        var resultspercollege = [5,9,9,8,5,5];
+        //draw bar chart
         var data3 = {
             labels : colleges,
                     datasets : [
                         {
                             fillColor : "#317eeb",
                             strokeColor : "#317eeb",
-                            data : resultspercollege
+                            data : recommendedpercollege
                         }/*,
                         {
                             fillColor : "#dcdcdc",
