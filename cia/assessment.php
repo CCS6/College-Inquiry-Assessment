@@ -19,7 +19,8 @@ $tempResultTable = array();
             <h1>College Inquiry Assessment Test</h1>
             <p>Instructions:</p>
             <p>Your answers are irreversible so if you want to go back, please refresh the page to start over.</p>
-            <p>Answer with utmost honesty as this will help you determine what college are you recommended by the system.</p>
+            <p>Choose a number to answer a question. 0 being the least likely, and 4 being the most likely.</p>
+            <p>Answer with utmost honesty as this will help you determine what college you will be recommended by the system.</p>
             <hr class="bottom-line">
             <div class="question-div">
               <?php
