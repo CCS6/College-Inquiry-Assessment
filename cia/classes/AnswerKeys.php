@@ -20,12 +20,7 @@ class AnswerKeys{
     }
 
     function addAnswerKey($db,$data){
-        // $db->select()->from("collegeanskey")->where('collegeID',$data['collegeID'])->execute();
-        // if (($db->affected_rows)<1) {
             $id = $db->insert("collegeanskey",$data);//returns the last id inserted
-        // }else{
-        //     $id = 0;
-        // }
         return $id;
     }
 

@@ -1,10 +1,3 @@
-/**
-* Theme: Montran Admin Template
-* Author: Coderthemes
-* Chart Js Page
-*
-*/
-
 !function($) {
     "use strict";
 

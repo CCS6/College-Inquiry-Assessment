@@ -1,10 +1,3 @@
-/**
-* Theme: Montran Admin Template
-* Author: Coderthemes
-* Module/App: Main Js
-*/
-
-
 !function($) {
     "use strict";
 
@@ -22,13 +15,13 @@
       } else if(!$("#wrapper").hasClass("enlarged") && $("body").hasClass("fixed-left-void")) {
         $("body").removeClass("fixed-left-void").addClass("fixed-left");
       }
-      
+
       if($("#wrapper").hasClass("enlarged")) {
         $(".left ul").removeAttr("style");
       } else {
         $(".subdrop").siblings("ul:first").show();
       }
-      
+
       toggle_slimscroll(".slimscrollleft");
       $("body").trigger("resize");
     },
@@ -37,13 +30,13 @@
        if(!$("#wrapper").hasClass("enlarged")){
         if($(this).parent().hasClass("has_sub")) {
           e.preventDefault();
-        }   
+        }
         if(!$(this).hasClass("subdrop")) {
           // hide any open menus and remove all other classes
           $("ul",$(this).parents("ul:first")).slideUp(350);
           $("a",$(this).parents("ul:first")).removeClass("subdrop");
           $("#sidebar-menu .pull-right i").removeClass("md-remove").addClass("md-add");
-          
+
           // open our new menu and add the open class
           $(this).next("ul").slideDown(350);
           $(this).addClass("subdrop");
@@ -54,7 +47,7 @@
           $(this).next("ul").slideUp(350);
           $(".pull-right i",$(this).parent()).removeClass("md-remove").addClass("md-add");
         }
-      } 
+      }
     },
 
     //init sidemenu
@@ -75,7 +68,7 @@
 
     //init Sidemenu
     $.Sidemenu = new Sidemenu, $.Sidemenu.Constructor = Sidemenu
-    
+
 }(window.jQuery),
 
 
@@ -131,7 +124,7 @@ function($) {
     },
      //init FullScreen
     $.FullScreen = new FullScreen, $.FullScreen.Constructor = FullScreen
-    
+
 }(window.jQuery),
 
 //portlets
@@ -178,30 +171,30 @@ function($) {
     },
     //
     $.Portlet = new Portlet, $.Portlet.Constructor = Portlet
-    
+
 }(window.jQuery),
 
 //main app module
  function($) {
     "use strict";
-    
+
     var MoltranApp = function() {
-        this.VERSION = "1.0.0", 
-        this.AUTHOR = "Coderthemes", 
-        this.SUPPORT = "coderthemes@gmail.com", 
-        this.pageScrollElement = "html, body", 
+        this.VERSION = "1.0.0",
+        this.AUTHOR = "Coderthemes",
+        this.SUPPORT = "coderthemes@gmail.com",
+        this.pageScrollElement = "html, body",
         this.$body = $("body")
     };
 
     //initializing tooltip
     MoltranApp.prototype.initTooltipPlugin = function() {
         $.fn.tooltip && $('[data-toggle="tooltip"]').tooltip()
-    }, 
+    },
 
     //initializing popover
     MoltranApp.prototype.initPopoverPlugin = function() {
         $.fn.popover && $('[data-toggle="popover"]').popover()
-    }, 
+    },
 
     //initializing nicescroll
     MoltranApp.prototype.initNiceScrollPlugin = function() {
@@ -214,7 +207,7 @@ function($) {
             $(".knob").knob();
         }
     },
-    
+
      //on doc load
     MoltranApp.prototype.onDocReady = function(e) {
       FastClick.attach(document.body);
@@ -222,9 +215,9 @@ function($) {
       resizefunc.push("changeptype");
 
       $('.animate-number').each(function(){
-        $(this).animateNumbers($(this).attr("data-value"), true, parseInt($(this).attr("data-duration"))); 
+        $(this).animateNumbers($(this).attr("data-value"), true, parseInt($(this).attr("data-duration")));
       });
-    
+
       //RUN RESIZE ITEMS
       $(window).resize(debounce(resizeitems,100));
       $("body").trigger("resize");
@@ -233,11 +226,11 @@ function($) {
       $('.right-bar-toggle').on('click', function(e){
           e.preventDefault();
           $('#wrapper').toggleClass('right-bar-enabled');
-      }); 
+      });
 
-      
+
     },
-    //initilizing 
+    //initilizing
     MoltranApp.prototype.init = function() {
         var $this = this;
         this.initTooltipPlugin(),
@@ -329,7 +322,7 @@ var debounce = function(func, wait, immediate) {
 }
 
 function resizeitems(){
-  if($.isArray(resizefunc)){  
+  if($.isArray(resizefunc)){
     for (i = 0; i < resizefunc.length; i++) {
         window[resizefunc[i]]();
     }

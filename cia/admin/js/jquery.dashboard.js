@@ -1,10 +1,3 @@
-/**
-* Theme: Moltran Admin Template
-* Author: Coderthemes
-* Module/App: Dashboard
-*/
-
-
 !function($) {
     "use strict";
 
@@ -118,7 +111,7 @@
         $.plot($(selector), data, options);
     },
 
-    
+
 
         //initializing various charts and components
         Dashboard.prototype.init = function() {
@@ -141,7 +134,7 @@
 
     //init Dashboard
     $.Dashboard = new Dashboard, $.Dashboard.Constructor = Dashboard
-    
+
 }(window.jQuery),
 
 //initializing Dashboard
@@ -149,5 +142,3 @@ function($) {
     "use strict";
     $.Dashboard.init()
 }(window.jQuery);
-
-

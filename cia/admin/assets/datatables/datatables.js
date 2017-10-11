@@ -1,10 +1,3 @@
-/**
-* Theme: Montran Admin Template
-* Author: Coderthemes
-* Component: Datatable
-* 
-*/
-
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
         define(['jquery','datatables'], factory);
@@ -401,7 +394,3 @@
 		} );
 	}
 }));
-
-
-
-

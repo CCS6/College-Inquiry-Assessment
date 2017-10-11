@@ -6,7 +6,7 @@ include '../../classes/Questions.php';
 include '../../classes/Degrees.php';
 include '../../classes/AnswerKeys.php';
 
-if(!$s->isLoggedIn()){
+if(!isset($_SESSION)){
     header('Location:../../index.php');
 }
 

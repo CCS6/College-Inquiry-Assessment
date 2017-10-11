@@ -11,8 +11,3 @@
     }
 
     echo json_encode($data);
-
-    // $finalMax = json_decode($_POST['finalMax']);
-    // echo '<pre>';
-    // print_r($finalMax);
-    // echo '</pre>';

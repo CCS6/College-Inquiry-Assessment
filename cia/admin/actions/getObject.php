@@ -2,7 +2,7 @@
     require_once '../../config.php';
     include '../../classes/Colleges.php';
     include '../../classes/Questions.php';
-    if(!$s->isLoggedIn()){
+    if(!isset($_SESSION)){
         header('Location:../../index.php');
     }
 

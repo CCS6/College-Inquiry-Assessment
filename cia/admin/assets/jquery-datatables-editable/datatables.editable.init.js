@@ -1,22 +1,10 @@
-/**
-* Theme: Montran Admin Template
-* Author: Coderthemes
-* Component: Editable
-*
-*/
-
 (function( $ ) {
 
-	var pageURL = $(location).attr("href");;
-	//console.log(pageURL);
+	var pageURL = $(location).attr("href");
 	var arr = pageURL.split('/');
-	//console.log(arr[arr.length-1]);
 	var page = arr[arr.length-1];
 	var urlString = window.location;
-
-	// if(page == 'index.php'){
-		$('a[href="' + page + '"]').addClass("active");
-	// }
+	$('a[href="' + page + '"]').addClass("active");
 
 	'use strict';
 
@@ -300,9 +288,6 @@
 						else
 							$this.html( '<input type="text" class="form-control input-block" value="' + data[i] + '"/>' );
 					}
-					// else if(page=='answerkeys.php'){
-
-					// }
 				}
 			});
 		},
@@ -316,14 +301,8 @@
 
 			//Add user
 			if(hasAdding){
-				//if ( $row.hasClass( 'adding' ) ) {
 					$row.addClass( 'adding' );
 					_self.rowSetActionsEditing( $row );
-
-					//highlight username value
-					//$row.find('input')[2].select();
-				//}
-
 				values = $row.find('td').map(function() {
 					var $this = $(this);
 
@@ -346,7 +325,6 @@
 					success:function(data){
 
 						var j = $.parseJSON(data);
-						//console.log('Notice:'+j.notice);
 						if(j.notice == "Success!"){
 							invalid = false;
 						}else{
@@ -368,7 +346,6 @@
 						if(page=='collegedegrees.php')
 							$row.find('input')[1].select();
 						else if(page=='users.php')
-							//highlight username value
 							$row.find('input')[2].select();
 					}
 				}else{
@@ -483,8 +460,6 @@
 
 	$(function() {
 		EditableTable.initialize();
-
-		//EditableTable.rowSave(dataArr);
 	});
 
 

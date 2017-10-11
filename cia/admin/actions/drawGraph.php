@@ -3,7 +3,7 @@ require_once '../../config.php';
 include '../../classes/Colleges.php';
 include '../../classes/Users.php';
 
-if(!$s->isLoggedIn()){
+if(!isset($_SESSION)){
     header('Location:../../index.php');
 }
 $u=new Users();
@@ -16,11 +16,9 @@ foreach($result as $values){
     $arr = explode(',',$values['resultCollege']);
     if(!empty($arr)){
         foreach($arr as $val){
-            //if(!in_array($val,$data['colleges']))
             $data['colleges'][] = $val;
         }
     }else{
-        //if(!in_array($values['resultCollege'],$data['colleges']))
         $data['colleges'][] = $values['resultCollege'];
     }
 

@@ -1,9 +1,3 @@
-/**
-* Theme: Velonic Admin Template
-* Author: Coderthemes
-* Todo Application
-*/
-
 !function($) {
     "use strict";
 
@@ -123,7 +117,7 @@
 
         //binding todo done chk
         $(document).on("change", this.$todoDonechk, function() {
-            if(this.checked) 
+            if(this.checked)
                 $this.markTodo($(this).attr('id'), true);
             else
                 $this.markTodo($(this).attr('id'), false);
@@ -143,7 +137,7 @@
     },
     //init TodoApp
     $.TodoApp = new TodoApp, $.TodoApp.Constructor = TodoApp
-    
+
 }(window.jQuery),
 
 //initializing todo app
