@@ -6,6 +6,10 @@ include '../../classes/Questions.php';
 include '../../classes/Degrees.php';
 include '../../classes/AnswerKeys.php';
 
+if(!$s->isLoggedIn()){
+    header('Location:../../index.php');
+}
+
 $data = array(
     'id'=>strip_tags(trim($_POST['ID'])),
     'table'=>strip_tags(trim($_POST['page'])),

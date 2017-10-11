@@ -6,7 +6,7 @@ require '../classes/Session.php';
 $s = new Session();
 //print_r($_SESSION);
 if(!$s->isLoggedIn()){
-    header('Location:../login.php');
+    header('Location:../index.php');
 }
 ?>
 <!DOCTYPE html>

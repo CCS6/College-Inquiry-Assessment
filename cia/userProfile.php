@@ -11,13 +11,6 @@
     $d=new Degrees();
     $result = $u->getUserbyId($db,$_SESSION['userID']);
     $arr = explode(',',$result[0]['resultCollege']);
-    // foreach($arr as $value){
-    //     $resultCollege = $c->getCollegeDetail($db,$value);
-    //     $resultDegree = $d->getDegrees($db,$result);
-    //
-    //     foreach($resultDegree as $key){
-    //     }
-    // }
 ?>
 <section id="feature" class="section-padding wow fadeInUp delay-05s">
     <div class="container-fluid cards-row">

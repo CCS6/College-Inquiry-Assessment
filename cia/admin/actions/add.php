@@ -5,6 +5,8 @@ include '../../classes/Colleges.php';
 include '../../classes/Questions.php';
 include '../../classes/Degrees.php';
 include '../../classes/AnswerKeys.php';
+
+if(isset($_SESSION)){
     $data = array(
         'table'=>strip_tags(trim($_POST['page'])),
         'values'=>$_POST['values']
@@ -110,6 +112,9 @@ include '../../classes/AnswerKeys.php';
             }
             echo json_encode($response);
         }
-
     }
+}
+else{
+    header('Location:../../index.php');
+}
 ?>

@@ -3,7 +3,9 @@ require_once '../../config.php';
 include '../../classes/Colleges.php';
 include '../../classes/Users.php';
 
-
+if(!$s->isLoggedIn()){
+    header('Location:../../index.php');
+}
 $u=new Users();
 $result = $u->getUsers($db);
 //print_r($result);

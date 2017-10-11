@@ -17,6 +17,9 @@ $tempResultTable = array();
     <div class="container">
         <div id="quizzie">
             <h1>College Inquiry Assessment Test</h1>
+            <p>Instructions:</p>
+            <p>Your answers are irreversible so if you want to go back, please refresh the page to start over.</p>
+            <p>Answer with utmost honesty as this will help you determine what college are you recommended by the system.</p>
             <hr class="bottom-line">
             <div class="question-div">
               <?php
@@ -63,8 +66,10 @@ $tempResultTable = array();
               $i++;
             }
             ?>
+
             <ul id="results">
                       <li class="results-inner">
+                          <p>Based on your answers, we recommend you to check out:</p>
                           <h1></h1>
                           <p class="desc"></p>
                       </li>
