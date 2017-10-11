@@ -3,8 +3,6 @@ require_once '../../config.php';
 include '../../classes/Colleges.php';
 include '../../classes/Users.php';
 
-if(isset($_SESSION)){
-
     $u=new Users();
     $result = $u->getUsers($db);
     //print_r($result);
@@ -25,8 +23,4 @@ if(isset($_SESSION)){
     $newarr = array_count_values( $data['colleges']);
 
     echo json_encode($newarr,JSON_FORCE_OBJECT);
-}
-else{
-    header('Location:../../index.php');
-}
 ?>
