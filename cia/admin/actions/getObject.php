@@ -2,9 +2,6 @@
     require_once '../../config.php';
     include '../../classes/Colleges.php';
     include '../../classes/Questions.php';
-    if(!isset($_SESSION)){
-        header('Location:../../index.php');
-    }
 
     $data = array(
         'table'=>strip_tags(trim($_POST['page']))
